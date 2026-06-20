@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --deep-navy: rgb(13,31,45);
+    --sage: rgb(122,145,129);
+    --taupe: rgb(174,160,140);
+    --black: rgb(18,18,18);
+    --warm-bg: rgb(247,245,241);
+    --gold: rgb(190,154,94);
+    --sand: rgb(239,233,224);
+    --line: rgba(174,160,140,.34);
+    --line-soft: rgba(174,160,140,.22);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 92px;
+  }
+
+  body {
+    @apply m-0 bg-warm text-ink antialiased;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background:
+      radial-gradient(circle at 12% 2%, rgba(122,145,129,.10), transparent 26%),
+      radial-gradient(circle at 86% 4%, rgba(190,154,94,.09), transparent 24%),
+      var(--warm-bg);
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+}
+
+@layer components {
+  .section {
+    @apply relative w-full px-6 py-[88px];
+  }
+
+  .site-view {
+    @apply mx-auto w-full max-w-site;
+  }
+
+  .eyebrow {
+    @apply mb-[15px] block text-xs font-black uppercase tracking-[.14em] text-sage;
+  }
+
+  .heading-xl {
+    @apply mb-5 text-[clamp(48px,6vw,88px)] font-black leading-[.94] tracking-[-.082em];
+  }
+
+  .heading-lg {
+    @apply mb-3 text-[clamp(36px,4.8vw,64px)] font-black leading-[.98] tracking-tightest2;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-0 px-5 py-3.5 text-sm font-black transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_16px_32px_rgba(13,31,45,.11)];
+  }
+
+  .btn-primary {
+    @apply bg-navy text-white;
+  }
+
+  .btn-secondary {
+    @apply border border-[rgba(174,160,140,.34)] bg-white/60 text-navy;
+  }
+
+  .feature-card {
+    @apply min-h-60 rounded-[26px] border border-[rgba(174,160,140,.22)] bg-white/55 p-7 transition duration-200 hover:-translate-y-1 hover:bg-white/70 hover:shadow-lift;
+  }
+
+  .form-field {
+    @apply w-full rounded-[14px] border border-[rgba(174,160,140,.34)] bg-white/60 px-3.5 py-3 text-ink outline-none transition focus:border-[rgba(174,160,140,.72)] focus:shadow-[0_0_0_4px_rgba(174,160,140,.12)];
+  }
+}
+
+.nav-button::before,
+.nav-button::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 0;
+  height: 7px;
+  transform: translateX(-50%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-button::before {
+  bottom: 5px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 70 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 7 C 12 1, 20 1, 30 7 S 50 13, 68 5' fill='none' stroke='rgb(174,160,140)' stroke-width='1.35' stroke-linecap='round'/%3E%3C/svg%3E");
+  transition: width .25s ease, opacity .18s ease;
+}
+
+.nav-button::after {
+  bottom: 2px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 70 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 6 C 12 8, 20 8, 28 5 S 46 0, 67 6' fill='none' stroke='rgb(222,211,195)' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E");
+  transition: width .30s ease .03s, opacity .18s ease;
+}
+
+.nav-button:hover::before,
+.nav-button:hover::after,
+.nav-button.active::before,
+.nav-button.active::after {
+  width: 48px;
+  opacity: 1;
+  animation: shoreCrash 1.05s ease-in-out infinite;
+}
+
+.nav-wave path {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.nav-wave-main {
+  stroke: rgba(174,160,140,.46);
+  stroke-width: 1.1;
+  stroke-dasharray: 22 18;
+  animation: tideLine 8s linear infinite;
+}
+
+.nav-wave-soft {
+  stroke: rgba(122,145,129,.24);
+  stroke-width: .9;
+  stroke-dasharray: 120 42;
+  animation: tideLine 12s linear infinite reverse;
+}
+
+@keyframes shoreCrash {
+  0%, 100% { transform: translateX(-50%) translateY(0) scaleX(.92); }
+  45% { transform: translateX(-50%) translateY(1px) scaleX(1.08); }
+  70% { transform: translateX(-50%) translateY(-1px) scaleX(.98); }
+}
+
+@keyframes tideLine {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -180; }
+}
+
+@keyframes contactMenuIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 720px) {
+  .section {
+    @apply px-[18px] py-16;
+  }
+}
