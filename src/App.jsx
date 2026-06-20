@@ -273,7 +273,7 @@ function LivingSection() {
         <div className="flex min-h-[clamp(480px,70vh,760px)] items-center justify-center bg-[rgba(239,233,224,.72)] px-6 py-14 lg:px-[clamp(48px,6vw,88px)]">
           <div className="w-full max-w-[520px]">
             <span className="eyebrow">Already in Panama</span>
-            <h2 className="mb-4 font-serif text-[clamp(30px,3.1vw,46px)] uppercase leading-tight tracking-wide text-navy">
+            <h2 className="mb-4 text-[clamp(30px,3.1vw,46px)] uppercase leading-tight tracking-wide text-navy">
               Services for people <span className="text-gold">living here.</span>
             </h2>
             <p className="mb-6 max-w-[460px] text-left leading-relaxed text-ink/65">
