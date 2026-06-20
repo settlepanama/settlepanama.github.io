@@ -3,6 +3,9 @@ export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Roboto', 'ui-sans-serif', 'system-ui', 'sans-serif']
+      },
       colors: {
         navy: 'rgb(13,31,45)',
         sage: 'rgb(122,145,129)',
