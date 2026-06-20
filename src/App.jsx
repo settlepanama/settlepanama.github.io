@@ -243,7 +243,12 @@ function LocationSection({ showPage }) {
           </button>
         </div>
 
-        <div className="relative min-h-[500px] overflow-hidden rounded-[34px] border border-[rgba(174,160,140,.22)] bg-[linear-gradient(145deg,rgba(247,245,241,.34),rgba(13,31,45,.08))] shadow-soft">
+        <div
+          className="relative min-h-[500px] overflow-hidden rounded-[34px] border border-[rgba(174,160,140,.22)] bg-cover bg-center shadow-soft"
+          style={{
+            backgroundImage: `linear-gradient(145deg, rgba(247,245,241,.34), rgba(13,31,45,.08)), url(${assets.mapCard})`
+          }}
+        >
           <div className="absolute inset-0 bg-warm/40 backdrop-grayscale" />
           <svg className="absolute inset-0 z-10 h-full w-full opacity-90" viewBox="0 0 600 420" preserveAspectRatio="none" aria-hidden="true">
             <path d="M78 120 C 160 100, 210 160, 270 190 S 430 260, 500 310" fill="none" stroke="rgba(190,154,94,.65)" strokeWidth="4" strokeLinecap="round" strokeDasharray="10 14" />

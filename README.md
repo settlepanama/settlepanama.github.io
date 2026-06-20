@@ -59,3 +59,17 @@ The Vite `base` is automatically set to `/<repo-name>/` when deployed through Gi
 - Internal landing anchors and SPA pages are separated:
   - Pages: `#landing`, `#about`, `#pricing`, `#contact`, `#templates`
   - Landing sections: `#location`, `#living`, `#relocate`, `#consultation`
+
+
+## Required image assets
+
+Place or replace the production assets here:
+
+```text
+public/assets/logo.svg
+public/assets/images/hero.webp
+public/assets/images/living.jpg
+public/assets/images/map-card.jpg
+```
+
+The React app references these through `src/lib/assets.js`.
