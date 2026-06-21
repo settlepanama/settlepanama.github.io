@@ -222,7 +222,8 @@ const translations = {
     "Call us": "Llámanos",
     "Call +507 6912-7505": "Llamar +507 6912-7505",
     "We answer until 12:00 AM Panama time": "Respondemos hasta las 12:00 AM hora de Panamá",
-    "Contact us": "Contáctanos"
+    "Contact us": "Contáctanos",
+    "Digital experience by SafeGuard CCS": "Experiencia digital por SafeGuard CCS"
   },
   fr: {
     "English": "Anglais",
@@ -353,7 +354,8 @@ const translations = {
     "Call us": "Appelez-nous",
     "Call +507 6912-7505": "Appeler le +507 6912-7505",
     "We answer until 12:00 AM Panama time": "Nous répondons jusqu’à 12:00 AM, heure du Panama",
-    "Contact us": "Contactez-nous"
+    "Contact us": "Contactez-nous",
+    "Digital experience by SafeGuard CCS": "Expérience digitale par SafeGuard CCS"
   }
 
 };
@@ -1207,6 +1209,15 @@ function Footer({ showPage }) {
         <div>
           <img className="mb-3 block w-[156px] brightness-0 invert" src={assets.logo} alt="Settle Panama" />
           <p className="m-0 text-white/70">{tx('Relocation, settlement and property support for International Residents in Panama.')}</p>
+          <a
+            className="safeguard-credit mt-5 inline-flex items-center gap-3 rounded-full border border-white/12 bg-white/5 px-3.5 py-2 text-xs font-bold text-white/68 transition hover:border-white/26 hover:bg-white/10 hover:text-white"
+            href="https://safeguardccs.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img className="h-5 w-auto opacity-85" src={assets.safeguardLogo} alt="SafeGuard CCS" />
+            <span>{tx('Digital experience by SafeGuard CCS')}</span>
+          </a>
         </div>
         <div className="flex flex-wrap gap-4 font-extrabold text-sand">
           {[

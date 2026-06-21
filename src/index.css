@@ -194,7 +194,7 @@ textarea {
   @keyframes pageEnter {
     from {
       opacity: 0;
-      transform: translateY(12px);
+      
       filter: blur(2px);
     }
 
@@ -478,7 +478,7 @@ textarea {
 @media (prefers-reduced-motion: reduce) {
   .reveal-on-scroll {
     opacity: 1;
-    transform: none;
+    
     filter: none;
     transition: none;
   }
@@ -1129,4 +1129,19 @@ html[data-theme='dark'] .living-services-button:hover {
   box-shadow:
     0 18px 38px rgba(0, 0, 0, .30),
     inset 0 1px 0 rgba(255, 255, 255, .42) !important;
+}
+
+
+/* Footer SafeGuard CCS credit */
+.safeguard-credit img {
+  max-width: 104px;
+}
+
+html[data-theme='dark'] .safeguard-credit {
+  border-color: rgba(243, 236, 226, .16) !important;
+  background: rgba(255, 255, 255, .06) !important;
+}
+
+html[data-theme='dark'] .safeguard-credit img {
+  filter: brightness(0) invert(1);
 }
