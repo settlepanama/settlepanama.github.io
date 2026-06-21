@@ -106,7 +106,7 @@ textarea {
   position: absolute;
   left: 50%;
   width: 0;
-  height: 7px;
+  height: 12px;
   transform: translateX(-50%);
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -115,13 +115,13 @@ textarea {
 }
 
 .nav-button::before {
-  bottom: 5px;
+  bottom: 2px;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 70 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 7 C 12 1, 20 1, 30 7 S 50 13, 68 5' fill='none' stroke='rgb(174,160,140)' stroke-width='1.35' stroke-linecap='round'/%3E%3C/svg%3E");
   transition: width .25s ease, opacity .18s ease;
 }
 
 .nav-button::after {
-  bottom: 2px;
+  bottom: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 70 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 6 C 12 8, 20 8, 28 5 S 46 0, 67 6' fill='none' stroke='rgb(222,211,195)' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E");
   transition: width .30s ease .03s, opacity .18s ease;
 }
@@ -132,7 +132,7 @@ textarea {
 .nav-button.active::after {
   width: 48px;
   opacity: 1;
-  animation: shoreCrash 1.05s ease-in-out infinite;
+  animation: shoreCrash 1.05s ease-in-out 1 forwards;
 }
 
 .nav-wave path {
@@ -144,14 +144,14 @@ textarea {
   stroke: rgba(174, 160, 140, .46);
   stroke-width: 1.1;
   stroke-dasharray: 22 18;
-  animation: none;
+  animation: tideLine 10s linear infinite;
 }
 
 .nav-wave-soft {
   stroke: rgba(122, 145, 129, .24);
   stroke-width: .9;
   stroke-dasharray: 120 42;
-  animation: none;
+  animation: tideLine 16s linear infinite reverse;
 }
 
 @keyframes shoreCrash {
@@ -209,4 +209,35 @@ textarea {
 .nav-wave-soft {
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+}
+
+
+/* Nav button underline wave: run once, then stop. Does not affect the navbar separator wave. */
+.nav-button {
+  overflow: visible;
+}
+
+.nav-button::before,
+.nav-button::after {
+  animation-iteration-count: 1 !important;
+  animation-fill-mode: forwards !important;
+  overflow: visible;
+}
+
+.nav-button:hover::before,
+.nav-button.active::before,
+.nav-button:hover::after,
+.nav-button.active::after {
+  animation-iteration-count: 1 !important;
+  animation-fill-mode: forwards !important;
+}
+
+
+/* Nav button underline wave: keep the original movement, but play once only. */
+.nav-button:hover::before,
+.nav-button:hover::after,
+.nav-button.active::before,
+.nav-button.active::after {
+  animation-iteration-count: 1 !important;
+  animation-fill-mode: forwards !important;
 }

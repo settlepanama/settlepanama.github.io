@@ -217,7 +217,7 @@ function Header({ page, showPage }) {
             {navItems.map(([target, label]) => (
               <button
                 key={target}
-                className={`nav-button relative rounded-full px-3 py-2 pb-3 text-[13px] font-extrabold text-ink/60 transition hover:text-navy ${page === target ? 'active text-navy' : ''}`}
+                className={`nav-button relative rounded-full px-3 pt-2 pb-4 text-[13px] font-extrabold text-ink/60 transition hover:text-navy ${page === target ? 'active text-navy' : ''}`}
                 type="button"
                 onClick={() => go(target)}
               >
