@@ -175,3 +175,31 @@ textarea {
     @apply px-[18px] py-16;
   }
 }
+
+
+  .page-transition {
+    animation: pageEnter .42s cubic-bezier(.22, .61, .36, 1) both;
+    will-change: opacity, transform, filter;
+  }
+
+  @keyframes pageEnter {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+      filter: blur(2px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .page-transition {
+      animation: none;
+      will-change: auto;
+    }
+  }
+

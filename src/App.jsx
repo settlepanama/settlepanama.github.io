@@ -635,6 +635,23 @@ function ContactWidget({ showPage }) {
   );
 }
 
+function renderPage(page, showPage, scrollLandingSection) {
+  switch (page) {
+    case 'landing':
+      return <LandingPage showPage={showPage} scrollLandingSection={scrollLandingSection} />;
+    case 'about':
+      return <AboutPage showPage={showPage} />;
+    case 'pricing':
+      return <PricingPage showPage={showPage} />;
+    case 'contact':
+      return <ContactPage />;
+    case 'templates':
+      return <TemplatesPage />;
+    default:
+      return <LandingPage showPage={showPage} scrollLandingSection={scrollLandingSection} />;
+  }
+}
+
 export default function App() {
   const { page, showPage, scrollLandingSection } = useHashRouter();
 
@@ -642,11 +659,9 @@ export default function App() {
     <>
       <Header page={page} showPage={showPage} />
       <main className="w-full overflow-hidden">
-        {page === 'landing' && <LandingPage showPage={showPage} scrollLandingSection={scrollLandingSection} />}
-        {page === 'about' && <AboutPage showPage={showPage} />}
-        {page === 'pricing' && <PricingPage showPage={showPage} />}
-        {page === 'contact' && <ContactPage />}
-        {page === 'templates' && <TemplatesPage />}
+        <div key={page} className="page-transition">
+          {renderPage(page, showPage, scrollLandingSection)}
+        </div>
       </main>
       <Footer showPage={showPage} />
       <ContactWidget showPage={showPage} />
