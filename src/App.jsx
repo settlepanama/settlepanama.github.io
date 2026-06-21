@@ -593,7 +593,7 @@ function Header({ page, showPage }) {
               </button>
 
               {languageOpen && (
-                <ul className="absolute right-0 top-10 z-[70] min-w-[138px] overflow-hidden rounded-xl border border-[rgba(174,160,140,.22)] bg-white py-1 text-sm shadow-[0_18px_42px_rgba(13,31,45,.13)]">
+                <ul className="language-menu absolute right-0 top-10 z-[70] min-w-[138px] overflow-hidden rounded-xl border border-[rgba(174,160,140,.22)] bg-white py-1 text-sm shadow-[0_18px_42px_rgba(13,31,45,.13)]">
                   {[
                     ['en', 'English'],
                     ['es', 'Spanish'],
@@ -602,7 +602,7 @@ function Header({ page, showPage }) {
                     <li key={code}>
                       <button
                         type="button"
-                        className={`block w-full px-3 py-2 text-left transition hover:bg-gray-50 ${language === code ? 'bg-gray-100 text-gray-900' : 'text-gray-700'}`}
+                        className={`language-option block w-full px-3 py-2 text-left transition hover:bg-gray-50 ${language === code ? 'is-active bg-gray-100 text-gray-900' : 'text-gray-700'}`}
                         onClick={() => selectLanguage(code)}
                       >
                         {tx(label)}
