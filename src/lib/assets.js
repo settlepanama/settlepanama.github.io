@@ -6,5 +6,8 @@ export const assets = {
   living: assetUrl('assets/images/living.jpg'),
   mapCard: assetUrl('assets/images/map-card.jpg'),
   relocateBg: assetUrl('assets/images/relocate-bg.jpg'),
-  contact: assetUrl('assets/images/contact.jpg')
+  contact: assetUrl('assets/images/contact.jpg'),
+  landingConsultation: assetUrl('assets/images/landing-consultation.jpg'),
+  landingPaperwork: assetUrl('assets/images/landing-paperwork.jpg'),
+  landingPersonalizedMove: assetUrl('assets/images/landing-personalized-move.jpg')
 };

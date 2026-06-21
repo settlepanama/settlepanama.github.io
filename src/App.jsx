@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Menu, Moon, ArrowRight } from 'lucide-react';
 import { assets } from './lib/assets.js';
 
-const pages = ['landing', 'about', 'pricing', 'contact', 'templates'];
+const pages = ['landing', 'about', 'landing-in-panama', 'contact', 'templates'];
 const landingSections = ['location', 'relocate', 'living', 'consultation'];
 
 const services = [
@@ -31,63 +31,66 @@ const features = [
   }
 ];
 
-const packages = [
+const landingInPanamaSections = [
   {
-    eyebrow: 'Settle Smart',
-    title: 'Clarity before the move',
-    price: 'Request a consultation',
-    text: 'Get the clarity you need before making the move.',
-    items: [
-      'Personalized relocation consultation',
-      'Residency and visa guidance',
+    eyebrow: 'Consultation',
+    title: 'Get clear, personalized guidance before making your move to Panama.',
+    bullets: [
+      'Residency and visa options',
       'Cost of living insights',
-      'Healthcare and banking information',
+      'Healthcare and insurance guidance',
+      'Banking information',
       'Neighborhood recommendations',
-      'Answers to your relocation questions'
+      'Housing and rental advice',
+      'Relocation timelines',
+      'Personalized Q&A sessions'
     ],
-    why: 'Get expert guidance and a personalized strategy before making one of life’s biggest decisions.',
-    bestFor: 'Those exploring a move to Panama.',
-    cta: 'Request a Consultation'
+    cta: 'Schedule a Consultation',
+    image: assets.landingConsultation,
+    contentSide: 'left',
+    focus: 'center right',
+    tone: 'warm'
   },
   {
-    eyebrow: 'Settle Ready',
-    title: 'Your relocation plan',
-    price: 'Start planning',
-    text: 'Build a relocation plan tailored to your goals, timeline, and lifestyle.',
-    items: [
-      'Personalized relocation planning',
+    eyebrow: 'Legal Paperwork',
+    title: 'Navigate Panama’s processes with local support and trusted guidance.',
+    bullets: [
+      'Residency application support',
+      'Document preparation guidance',
+      'Appointment coordination',
+      'Government process assistance',
+      'Translation referrals',
+      'Follow-up on required paperwork',
+      'Local liaison support'
+    ],
+    cta: 'Get Paperwork Assistance',
+    image: assets.landingPaperwork,
+    contentSide: 'right',
+    focus: 'center left',
+    tone: 'sage'
+  },
+  {
+    eyebrow: 'Personalized Move',
+    title: 'A relocation experience designed around your needs, lifestyle, and timeline.',
+    bullets: [
       'House hunting assistance',
       'Realtor coordination',
-      'Area tours and neighborhood matching',
-      'Move preparation support',
-      'Arrival planning',
-      'Customized relocation roadmap'
-    ],
-    why: 'Turn your relocation goals into a clear, organized plan designed specifically for your move.',
-    bestFor: 'Those preparing to relocate to Panama.',
-    cta: 'Start Planning Your Move',
-    featured: true
-  },
-  {
-    eyebrow: 'Settle Easy',
-    title: 'Hands-on local support',
-    price: 'Personalized quote',
-    text: 'Enjoy a fully personalized relocation experience with hands-on local support.',
-    items: [
       'Airport arrival coordination',
-      'Home setup assistance',
+      'Home setup support',
       'Internet and mobile service setup',
       'Furniture and household sourcing',
       'Vehicle assistance',
       'Move-in coordination',
-      'Local concierge support',
-      'Dedicated relocation coordinator'
+      'Concierge recommendations'
     ],
-    why: 'Arrive in Panama with everything ready, while we manage the details and logistics for a smooth transition.',
-    bestFor: 'Those looking for a seamless, stress-free move.',
-    cta: 'Get a Personalized Quote'
+    cta: 'Start Your Relocation Plan',
+    image: assets.landingPersonalizedMove,
+    contentSide: 'left',
+    focus: 'center right',
+    tone: 'navy'
   }
 ];
+
 
 function LanguageIcon() {
   return (
@@ -143,6 +146,28 @@ function CloseIcon() {
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
     </svg>
   );
+}
+
+function useRevealOnScroll() {
+  useEffect(() => {
+    const elements = Array.from(document.querySelectorAll('[data-reveal]'));
+    if (!elements.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.18, rootMargin: '0px 0px -8% 0px' }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, []);
 }
 
 function useHashRouter() {
@@ -210,7 +235,7 @@ function Header({ page, showPage }) {
   const [language, setLanguage] = useState('English');
   const navItems = [
     ['about', 'About'],
-    ['pricing', 'Pricing'],
+    ['landing-in-panama', 'Landing in Panama'],
     ['contact', 'Contact']
   ];
 
@@ -435,8 +460,8 @@ function RelocationSection({ showPage }) {
         </div>
 
         <div className="mt-10 flex justify-center">
-          <button className="btn bg-navy text-white hover:bg-[rgb(18,42,58)] hover:shadow-[0_16px_32px_rgba(13,31,45,.11)]" type="button" onClick={() => showPage('pricing')}>
-            View relocation plans <ArrowRight size={16} />
+          <button className="btn bg-navy text-white hover:bg-[rgb(18,42,58)] hover:shadow-[0_16px_32px_rgba(13,31,45,.11)]" type="button" onClick={() => showPage('landing-in-panama')}>
+            Landing in Panama <ArrowRight size={16} />
           </button>
         </div>
       </div>
@@ -502,31 +527,63 @@ function AboutPage({ showPage }) {
   );
 }
 
-function PricingPage({ showPage }) {
+function LandingInPanamaPage({ showPage }) {
+  useRevealOnScroll();
+
   return (
-    <section className="section min-h-[calc(100vh-92px)] bg-[rgba(239,233,224,.72)]">
-      <div className="site-view">
-        <div className="mx-auto mb-11 max-w-[760px] text-center">
-          <span className="eyebrow">Pricing</span>
-          <h1 className="heading-xl text-ink">Choose the right level of support.</h1>
-          <p className="text-ink/65">Every move is different, so packages are scoped after a short consultation.</p>
-        </div>
-        <div className="grid gap-5 lg:grid-cols-3">
-          {packages.map((item) => (
-            <article key={item.title} className={`flex min-h-[380px] flex-col rounded-[28px] border p-7 transition hover:-translate-y-1.5 hover:shadow-lift ${item.featured ? 'border-navy bg-navy text-white' : 'border-[rgba(174,160,140,.22)] bg-white/60 text-ink'}`}>
-              <small className={`mb-4 text-xs font-black uppercase tracking-[.1em] ${item.featured ? 'text-sand/80' : 'text-sage'}`}>{item.eyebrow}</small>
-              <h3 className={`mb-2 text-2xl font-black ${item.featured ? 'text-white' : 'text-navy'}`}>{item.title}</h3>
-              <div className={`mb-4 text-4xl font-black tracking-[-.06em] ${item.featured ? 'text-white' : 'text-navy'}`}>{item.price}</div>
-              <p className={`${item.featured ? 'text-white/75' : 'text-ink/65'}`}>{item.text}</p>
-              <ul className="my-6 grid gap-3 text-sm">
-                {item.items.map((line) => (
-                  <li key={line} className={`relative pl-5 before:absolute before:left-0 before:top-2 before:h-2 before:w-2 before:rounded-full before:bg-gold ${item.featured ? 'text-white/75' : 'text-ink/65'}`}>{line}</li>
-                ))}
-              </ul>
-              <button className={`btn mt-auto w-fit ${item.featured ? 'bg-sand text-navy' : 'btn-primary'}`} type="button" onClick={() => showPage('contact')}>Request scope</button>
-            </article>
-          ))}
-        </div>
+    <section className="landing-panama-page">
+      <div className="landing-panama-stack">
+        {landingInPanamaSections.map((section, index) => {
+          const contentRight = section.contentSide === 'right';
+
+          return (
+            <section
+              key={section.eyebrow}
+              data-reveal
+              className={`landing-panama-panel reveal-on-scroll ${section.tone} ${index === 0 ? 'is-first' : ''} ${contentRight ? 'content-right' : 'content-left'}`}
+              style={{
+                zIndex: index + 1,
+                backgroundImage: `url(${section.image})`,
+                backgroundPosition: section.focus
+              }}
+            >
+              <div className="landing-panama-overlay" />
+
+              <div className="landing-panama-inner">
+                <div className={`landing-panama-content ${contentRight ? 'ml-auto' : ''}`}>
+                  <span className="eyebrow text-sand/80">{section.eyebrow}</span>
+                  <h2 className="mb-5 text-[clamp(32px,4vw,60px)] font-normal uppercase leading-[1.02] tracking-[.02em] text-white">
+                    {section.eyebrow}
+                  </h2>
+                  <p className="mb-8 max-w-[680px] text-base leading-relaxed text-white/82">
+                    {section.title}
+                  </p>
+
+                  <div className="landing-panama-badge">
+                    <div className="landing-panama-bullets">
+                      {section.bullets.map((bullet) => (
+                        <div key={bullet} className="landing-panama-bullet">
+                          <span className="landing-panama-dot" />
+                          <span>{bullet}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className={`landing-panama-cta-row ${contentRight ? 'justify-start' : 'justify-end'}`}>
+                  <button
+                    className="landing-panama-image-cta"
+                    type="button"
+                    onClick={() => showPage('contact')}
+                  >
+                    {section.cta} <ArrowRight size={16} />
+                  </button>
+                </div>
+              </div>
+            </section>
+          );
+        })}
       </div>
     </section>
   );
@@ -608,9 +665,13 @@ function Footer({ showPage }) {
           <p className="m-0 text-white/70">Relocation, settlement and property support for International Residents in Panama.</p>
         </div>
         <div className="flex flex-wrap gap-4 font-extrabold text-sand">
-          {['about', 'pricing', 'contact'].map((item) => (
+          {[
+            ['about', 'About'],
+            ['landing-in-panama', 'Landing in Panama'],
+            ['contact', 'Contact']
+          ].map(([item, label]) => (
             <button key={item} className="transition hover:text-gold" type="button" onClick={() => showPage(item)}>
-              {item[0].toUpperCase() + item.slice(1)}
+              {label}
             </button>
           ))}
         </div>
@@ -680,8 +741,8 @@ function renderPage(page, showPage, scrollLandingSection) {
       return <LandingPage showPage={showPage} scrollLandingSection={scrollLandingSection} />;
     case 'about':
       return <AboutPage showPage={showPage} />;
-    case 'pricing':
-      return <PricingPage showPage={showPage} />;
+    case 'landing-in-panama':
+      return <LandingInPanamaPage showPage={showPage} />;
     case 'contact':
       return <ContactPage />;
     case 'templates':

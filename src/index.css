@@ -275,3 +275,255 @@ textarea {
   animation-iteration-count: infinite !important;
   animation-fill-mode: none !important;
 }
+
+.landing-panama-page {
+  width: 100%;
+  background: rgb(13, 31, 45);
+  overflow: hidden;
+}
+
+.landing-panama-stack {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.landing-panama-panel {
+  --overlay-start: rgba(13,31,45,.86);
+  --overlay-mid: rgba(13,31,45,.56);
+  --overlay-end: rgba(13,31,45,.08);
+  --accent-glow: rgba(239,233,224,.10);
+  position: relative;
+  min-height: max(72vh, 560px);
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgb(13, 31, 45);
+  clip-path: polygon(0 78px, 100% 0, 100% 100%, 0 100%);
+  margin-top: -78px;
+}
+
+.landing-panama-panel.is-first {
+  margin-top: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.landing-panama-panel.warm {
+  --overlay-start: rgba(13,31,45,.82);
+  --overlay-mid: rgba(174,160,140,.30);
+  --overlay-end: rgba(239,233,224,.05);
+  --accent-glow: rgba(239,233,224,.16);
+}
+
+.landing-panama-panel.sage {
+  --overlay-start: rgba(64,82,73,.84);
+  --overlay-mid: rgba(122,145,129,.36);
+  --overlay-end: rgba(239,233,224,.05);
+  --accent-glow: rgba(122,145,129,.18);
+}
+
+.landing-panama-panel.navy {
+  --overlay-start: rgba(13,31,45,.88);
+  --overlay-mid: rgba(24,58,79,.44);
+  --overlay-end: rgba(239,233,224,.04);
+  --accent-glow: rgba(174,160,140,.14);
+}
+
+.landing-panama-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(90deg, var(--overlay-start) 0%, var(--overlay-mid) 38%, var(--overlay-end) 70%, rgba(0,0,0,0) 100%);
+  pointer-events: none;
+}
+
+.landing-panama-panel.content-right::before {
+  background: linear-gradient(270deg, var(--overlay-start) 0%, var(--overlay-mid) 38%, var(--overlay-end) 70%, rgba(0,0,0,0) 100%);
+}
+
+.landing-panama-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 16% 18%, var(--accent-glow), transparent 28%),
+    linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0) 22%, rgba(13,31,45,.10) 100%);
+  pointer-events: none;
+}
+
+.landing-panama-panel.content-right .landing-panama-overlay {
+  background:
+    radial-gradient(circle at 84% 18%, var(--accent-glow), transparent 28%),
+    linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0) 22%, rgba(13,31,45,.10) 100%);
+}
+
+.landing-panama-inner {
+  position: relative;
+  width: min(100%, 1240px);
+  margin-inline: auto;
+  padding: 104px 24px 82px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.landing-panama-content {
+  width: min(100%, 590px);
+  padding: 22px 22px 20px;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 24px;
+  background: rgba(255,255,255,.05);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 20px 48px rgba(13,31,45,.10);
+}
+
+.landing-panama-content .eyebrow,
+.landing-panama-content h2,
+.landing-panama-content p {
+  text-shadow: 0 1px 12px rgba(13,31,45,.20);
+}
+
+.landing-panama-badge {
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 18px;
+  background: rgba(255,255,255,.06);
+  backdrop-filter: blur(8px);
+  padding: 12px 14px;
+}
+
+.landing-panama-bullets {
+  display: grid;
+  gap: 8px 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.landing-panama-bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: rgba(255,255,255,.94);
+  line-height: 1.35;
+  font-size: 13.5px;
+}
+
+.landing-panama-dot {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+  border-radius: 999px;
+  background: rgb(239,233,224);
+  margin-top: 6px;
+  box-shadow: 0 0 0 3px rgba(239,233,224,.08);
+}
+
+.landing-panama-cta-row {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 36px;
+  display: flex;
+}
+
+.landing-panama-image-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.34);
+  background: rgba(255,255,255,.12);
+  color: rgba(255,255,255,.98);
+  padding: 0 18px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+  transition: background-color .22s ease, border-color .22s ease, box-shadow .22s ease;
+  text-shadow: 0 1px 10px rgba(13,31,45,.22);
+}
+
+.landing-panama-image-cta:hover {
+  background: rgba(255,255,255,.18);
+  border-color: rgba(255,255,255,.52);
+  box-shadow: 0 14px 28px rgba(13,31,45,.18);
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(26px);
+  filter: blur(6px);
+  transition:
+    opacity .78s cubic-bezier(.22,.61,.36,1),
+    transform .78s cubic-bezier(.22,.61,.36,1),
+    filter .78s cubic-bezier(.22,.61,.36,1);
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .landing-panama-panel,
+  .landing-panama-panel.is-first {
+    min-height: auto;
+    clip-path: none;
+    margin-top: 0;
+  }
+
+  .landing-panama-inner {
+    padding: 82px 22px 88px;
+  }
+
+  .landing-panama-content,
+  .landing-panama-content.ml-auto {
+    margin-left: 0;
+    width: min(100%, 680px);
+    padding: 20px 18px 18px;
+  }
+
+  .landing-panama-bullets {
+    grid-template-columns: 1fr;
+  }
+
+  .landing-panama-cta-row {
+    justify-content: flex-start;
+    bottom: 28px;
+    left: 22px;
+    right: 22px;
+  }
+}
+
+@media (max-width: 767px) {
+  .landing-panama-inner {
+    padding: 72px 20px 88px;
+  }
+
+  .landing-panama-badge {
+    padding: 12px;
+  }
+
+  .landing-panama-bullet {
+    font-size: 13px;
+  }
+
+  .landing-panama-image-cta {
+    width: 100%;
+    justify-content: center;
+  }
+}
