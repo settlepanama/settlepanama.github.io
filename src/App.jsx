@@ -709,7 +709,7 @@ function AboutPanamaPage({ showPage }) {
           <span className="eyebrow text-sand/80">About Panama</span>
           <h1 className="heading-xl text-white">Your new life in Panama starts here.</h1>
           <p className="about-panama-lead">
-            Discover why thousands of expats, retirees, entrepreneurs, and investors choose Panama for its lifestyle, stability, connectivity, and endless opportunities.
+            Discover why retirees, entrepreneurs, investors, and international residents choose Panama for its lifestyle, stability, connectivity, and endless opportunities.
           </p>
         </div>
 
