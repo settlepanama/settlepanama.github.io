@@ -1,15 +1,5 @@
-import { useEffect, useMemo, useState } from 'react';
-import {
-  Globe2,
-  Menu,
-  Moon,
-  Send,
-  MessageCircle,
-  Phone,
-  X,
-  ArrowRight,
-  Sun
-} from 'lucide-react';
+import { Menu, Moon, ArrowRight } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { assets } from './lib/assets.js';
 
 const pages = ['landing', 'about', 'pricing', 'contact', 'templates'];
@@ -65,6 +55,62 @@ const packages = [
     items: ['Home watch', 'Vendor coordination', 'Maintenance follow-up']
   }
 ];
+
+function LanguageIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.55" stroke="currentColor" width="22" height="22" aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802" />
+    </svg>
+  );
+}
+
+function WhatsAppIcon() {
+  return (
+    <svg fill="currentColor" viewBox="0 0 448 512" aria-hidden="true">
+      <path fillRule="evenodd" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
+    </svg>
+  );
+}
+
+function TelegramIcon() {
+  return (
+    <svg fill="currentColor" viewBox="0 0 496 512" aria-hidden="true">
+      <path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 13.6-11.1 16.9-22.4 10.5l-62-45.7-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-4.4-1.1-6.9-7.7-2.5l-142 89.4-61.2-19.1c-13.3-4.2-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4 20.8 2.7 17.2 19.5z" />
+    </svg>
+  );
+}
+
+function CalendarIcon() {
+  return (
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg>
+  );
+}
+
+function PhoneIcon() {
+  return (
+    <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path fillRule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clipRule="evenodd" />
+    </svg>
+  );
+}
+
+function MessageIcon() {
+  return (
+    <svg className="h-7 w-7" viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true">
+      <path d="M160-240q-33 0-56.5-23.5T80-320v-480q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v720L720-240H160Z" />
+    </svg>
+  );
+}
+
+function CloseIcon() {
+  return (
+    <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  );
+}
 
 function useHashRouter() {
   const initial = () => {
@@ -127,6 +173,8 @@ function useHashRouter() {
 
 function Header({ page, showPage }) {
   const [open, setOpen] = useState(false);
+  const [languageOpen, setLanguageOpen] = useState(false);
+  const [language, setLanguage] = useState('English');
   const navItems = [
     ['about', 'About'],
     ['pricing', 'Pricing'],
@@ -135,7 +183,13 @@ function Header({ page, showPage }) {
 
   const go = (target) => {
     setOpen(false);
+    setLanguageOpen(false);
     showPage(target);
+  };
+
+  const selectLanguage = (nextLanguage) => {
+    setLanguage(nextLanguage);
+    setLanguageOpen(false);
   };
 
   return (
@@ -173,9 +227,33 @@ function Header({ page, showPage }) {
           </nav>
 
           <div className={`${open ? 'flex' : 'hidden'} items-center justify-start gap-3 lg:flex lg:justify-end`}>
-            <button className="grid h-8 w-8 place-items-center rounded-full text-navy transition hover:-translate-y-px hover:bg-taupe/15 hover:text-gold" type="button" aria-label="Language">
-              <Globe2 size={17} />
-            </button>
+            <div className="relative">
+              <button
+                className="grid h-8 w-8 place-items-center rounded-full text-navy transition hover:-translate-y-px hover:bg-taupe/15 hover:text-gold"
+                type="button"
+                aria-label="Language"
+                aria-expanded={languageOpen}
+                onClick={() => setLanguageOpen((value) => !value)}
+              >
+                <LanguageIcon />
+              </button>
+
+              {languageOpen && (
+                <ul className="absolute right-0 top-10 z-[70] min-w-[138px] overflow-hidden rounded-xl border border-[rgba(174,160,140,.22)] bg-white py-1 text-sm shadow-[0_18px_42px_rgba(13,31,45,.13)]">
+                  {['English', 'Spanish'].map((item) => (
+                    <li key={item}>
+                      <button
+                        type="button"
+                        className={`block w-full px-3 py-2 text-left transition hover:bg-gray-50 ${language === item ? 'bg-gray-100 text-gray-900' : 'text-gray-700'}`}
+                        onClick={() => selectLanguage(item)}
+                      >
+                        {item}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
             <button className="grid h-8 w-8 place-items-center rounded-full text-navy transition hover:-translate-y-px hover:bg-taupe/15 hover:text-gold" type="button" aria-label="Theme">
               <Moon size={17} />
             </button>
@@ -187,7 +265,7 @@ function Header({ page, showPage }) {
       </header>
 
       <div className="nav-wave h-4 w-full overflow-hidden">
-        <svg viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true">
+        <svg className="block h-full w-full" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true">
           <path className="nav-wave-soft" d="M0 22 C 120 32, 220 10, 340 22 S 560 34, 700 22 S 930 8, 1080 22 S 1320 34, 1440 20" />
           <path className="nav-wave-main" d="M0 28 C 140 12, 230 14, 360 28 S 590 42, 720 28 S 960 8, 1110 28 S 1320 44, 1440 26" />
         </svg>
@@ -217,9 +295,6 @@ function Hero({ showPage, scrollLandingSection }) {
             </button>
             <button className="btn border border-sand/50 bg-white/10 text-white backdrop-blur hover:bg-sand/15" type="button" onClick={() => scrollLandingSection('living')}>
               I already live in Panama
-            </button>
-            <button className="btn border border-sand/50 bg-white/10 text-white backdrop-blur hover:bg-sand/15" type="button" onClick={() => showPage('contact')}>
-              Contact us
             </button>
           </div>
         </div>
@@ -502,25 +577,32 @@ function ContactWidget({ showPage }) {
     showPage('contact');
   };
 
-  const options = useMemo(() => [
-    { label: 'WhatsApp', href: 'https://wa.me/5076000000', className: 'bg-green-600 hover:bg-green-700', icon: <MessageCircle size={16} /> },
-    { label: 'Telegram', href: 'https://t.me/settlepanama', className: 'bg-blue-500 hover:bg-blue-600', icon: <Send size={16} /> },
-    { label: 'Book a free consultation', onClick: goContact, className: 'bg-navy hover:bg-[rgb(18,42,58)]', icon: <MessageCircle size={16} /> },
-    { label: 'Call', href: 'tel:+5076000000', className: 'bg-navy hover:bg-[rgb(18,42,58)]', icon: <Phone size={16} /> }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  ], []);
+  const optionBaseClass = 'flex min-h-11 items-center justify-start gap-2.5 whitespace-nowrap rounded-[10px] border border-white/35 px-3.5 py-3 text-sm text-white shadow-[0_12px_24px_rgba(13,31,45,.16)] transition hover:-translate-y-px hover:scale-105 hover:shadow-[0_16px_34px_rgba(13,31,45,.22)]';
 
   return (
     <div className="fixed bottom-6 right-6 z-[60] grid justify-items-end gap-3 max-[720px]:bottom-[18px] max-[720px]:right-[18px]">
       {open && (
-        <div className="flex animate-[contactMenuIn_.26s_ease_both] flex-col items-stretch justify-end gap-2 font-extrabold">
-          {options.map((option) => {
-            const classes = `flex min-h-11 items-center justify-start gap-2 whitespace-nowrap rounded-[10px] border border-white/35 px-3.5 py-3 text-sm text-white shadow-[0_12px_24px_rgba(13,31,45,.16)] transition hover:-translate-y-px hover:scale-105 hover:shadow-[0_16px_34px_rgba(13,31,45,.22)] ${option.className}`;
-            if (option.href) {
-              return <a key={option.label} className={classes} href={option.href}>{option.icon}{option.label}</a>;
-            }
-            return <button key={option.label} className={classes} type="button" onClick={option.onClick}>{option.icon}{option.label}</button>;
-          })}
+        <div className="flex animate-[contactMenuIn_.26s_ease_both] flex-col items-stretch justify-end gap-2 font-extrabold" aria-label="Contact options">
+          <a className={`${optionBaseClass} bg-green-600 hover:bg-green-700`} href="https://wa.me/5076000000" title="Message us on WhatsApp">
+            <span className="h-4 w-4 flex-none"><WhatsAppIcon /></span>
+            <span>Message us on WhatsApp</span>
+          </a>
+
+          <a className={`${optionBaseClass} bg-blue-500 hover:bg-blue-600`} href="https://t.me/settlepanama" title="Message us on Telegram">
+            <span className="h-4 w-4 flex-none"><TelegramIcon /></span>
+            <span>Message us on Telegram</span>
+          </a>
+
+          <button className={`${optionBaseClass} bg-navy hover:bg-[rgb(18,42,58)]`} type="button" onClick={goContact} title="Book a free consultation">
+            <span className="h-4 w-4 flex-none"><CalendarIcon /></span>
+            <span>Book a free consultation</span>
+          </button>
+
+          <a className={`${optionBaseClass} bg-navy hover:bg-[rgb(18,42,58)]`} href="tel:+5076000000" title="Call us">
+            <span className="h-4 w-4 flex-none"><PhoneIcon /></span>
+            <span>Call +507 6000-0000</span>
+          </a>
+
           <div className="rounded-[10px] border border-white/35 bg-navy/80 px-3 py-2 text-center text-xs text-white shadow-lg backdrop-blur">We work 09:00–17:00 Panama time</div>
         </div>
       )}
@@ -528,12 +610,13 @@ function ContactWidget({ showPage }) {
       <button
         className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-white/40 bg-navy text-white shadow-[0_24px_50px_rgba(13,31,45,.30)] transition hover:scale-105 hover:bg-[rgb(18,42,58)]"
         type="button"
-        aria-label={open ? 'Close contact options' : 'Open contact options'}
+        title="Contact us"
+        aria-label="Contact us"
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}
       >
-        <span className="grid place-items-center transition duration-300">
-          {open ? <X size={28} /> : <MessageCircle size={28} />}
+        <span className={`grid place-items-center transition duration-300 ${open ? 'rotate-45 scale-[1.02]' : ''}`}>
+          {open ? <CloseIcon /> : <MessageIcon />}
         </span>
         <span className="absolute -right-1 -top-1 h-4 w-4 rounded-full bg-green-500 before:absolute before:inset-0 before:animate-ping before:rounded-full before:bg-green-500 before:opacity-75" />
       </button>
