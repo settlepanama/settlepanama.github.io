@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Menu, Moon, ArrowRight } from 'lucide-react';
 import { assets } from './lib/assets.js';
 
@@ -589,24 +589,125 @@ function AboutPanamaPage({ showPage }) {
     }
   ];
 
+  const AUTO_CYCLE_MS = 5200;
+  const FADE_DURATION_MS = 420;
+
   const [activeHighlightIndex, setActiveHighlightIndex] = useState(0);
+  const [currentBackground, setCurrentBackground] = useState(panamaHighlights[0].image);
+  const [nextBackground, setNextBackground] = useState(null);
+  const [isCrossfading, setIsCrossfading] = useState(false);
+
+  const loadedImagesRef = useRef(new Set());
+  const autoCycleTimeoutRef = useRef(null);
+  const crossfadeTimeoutRef = useRef(null);
+
   const activeHighlight = panamaHighlights[activeHighlightIndex];
 
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      setActiveHighlightIndex((currentIndex) => (currentIndex + 1) % panamaHighlights.length);
-    }, 5200);
+  const scheduleNextAutoCycle = () => {
+    if (autoCycleTimeoutRef.current) {
+      window.clearTimeout(autoCycleTimeoutRef.current);
+    }
 
-    return () => window.clearInterval(interval);
+    autoCycleTimeoutRef.current = window.setTimeout(() => {
+      setActiveHighlightIndex((currentIndex) => (currentIndex + 1) % panamaHighlights.length);
+    }, AUTO_CYCLE_MS);
+  };
+
+  const transitionToBackground = (imageUrl) => {
+    if (!imageUrl || imageUrl === currentBackground) return;
+
+    if (crossfadeTimeoutRef.current) {
+      window.clearTimeout(crossfadeTimeoutRef.current);
+    }
+
+    const startCrossfade = () => {
+      setNextBackground(imageUrl);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsCrossfading(true);
+        });
+      });
+
+      crossfadeTimeoutRef.current = window.setTimeout(() => {
+        setCurrentBackground(imageUrl);
+        setNextBackground(null);
+        setIsCrossfading(false);
+      }, FADE_DURATION_MS);
+    };
+
+    if (loadedImagesRef.current.has(imageUrl)) {
+      startCrossfade();
+      return;
+    }
+
+    const img = new Image();
+    img.onload = () => {
+      loadedImagesRef.current.add(imageUrl);
+      startCrossfade();
+    };
+    img.src = imageUrl;
+  };
+
+  const handleHighlightSelect = (index) => {
+    setActiveHighlightIndex(index);
+    scheduleNextAutoCycle();
+  };
+
+  useEffect(() => {
+    panamaHighlights.forEach((item) => {
+      const img = new Image();
+      img.onload = () => {
+        loadedImagesRef.current.add(item.image);
+      };
+      img.src = item.image;
+
+      if (img.complete) {
+        loadedImagesRef.current.add(item.image);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    transitionToBackground(activeHighlight.image);
+    scheduleNextAutoCycle();
+
+    return () => {
+      if (autoCycleTimeoutRef.current) {
+        window.clearTimeout(autoCycleTimeoutRef.current);
+      }
+    };
+  }, [activeHighlightIndex]);
+
+  useEffect(() => {
+    return () => {
+      if (autoCycleTimeoutRef.current) {
+        window.clearTimeout(autoCycleTimeoutRef.current);
+      }
+      if (crossfadeTimeoutRef.current) {
+        window.clearTimeout(crossfadeTimeoutRef.current);
+      }
+    };
   }, []);
 
   return (
-    <section
-      className="about-panama-page"
-      style={{
-        backgroundImage: `linear-gradient(180deg, rgba(13,31,45,.66) 0%, rgba(13,31,45,.58) 28%, rgba(13,31,45,.48) 100%), url(${activeHighlight.image})`
-      }}
-    >
+    <section className="about-panama-page">
+      <div
+        className="about-panama-bg about-panama-bg-current"
+        style={{
+          backgroundImage: `linear-gradient(180deg, rgba(13,31,45,.66) 0%, rgba(13,31,45,.58) 28%, rgba(13,31,45,.48) 100%), url(${currentBackground})`
+        }}
+        aria-hidden="true"
+      />
+      {nextBackground && (
+        <div
+          className={`about-panama-bg about-panama-bg-next ${isCrossfading ? 'is-visible' : ''}`}
+          style={{
+            backgroundImage: `linear-gradient(180deg, rgba(13,31,45,.66) 0%, rgba(13,31,45,.58) 28%, rgba(13,31,45,.48) 100%), url(${nextBackground})`
+          }}
+          aria-hidden="true"
+        />
+      )}
+
       <div className="about-panama-shell">
         <div className="about-panama-hero">
           <span className="eyebrow text-sand/80">About Panama</span>
@@ -629,7 +730,7 @@ function AboutPanamaPage({ showPage }) {
                 key={item.title}
                 className={`about-panama-option ${activeHighlightIndex === index ? 'is-active' : ''}`}
                 type="button"
-                onClick={() => setActiveHighlightIndex(index)}
+                onClick={() => handleHighlightSelect(index)}
               >
                 <span className="about-panama-option-kicker">{item.eyebrow}</span>
                 <span className="about-panama-option-title">{item.title}</span>

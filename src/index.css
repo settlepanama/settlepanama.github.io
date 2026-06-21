@@ -567,10 +567,30 @@ textarea {
   min-height: calc(100vh - 92px);
   width: 100%;
   background-color: rgb(13, 31, 45);
+  overflow: hidden;
+}
+
+.about-panama-bg {
+  position: absolute;
+  inset: 0;
+  background-color: rgb(13, 31, 45);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  transition: background-image .65s ease-in-out, background-position .65s ease-in-out;
+  pointer-events: none;
+}
+
+.about-panama-bg-current {
+  opacity: 1;
+}
+
+.about-panama-bg-next {
+  opacity: 0;
+  transition: opacity .42s ease-in-out;
+}
+
+.about-panama-bg-next.is-visible {
+  opacity: 1;
 }
 
 .about-panama-page::before {
