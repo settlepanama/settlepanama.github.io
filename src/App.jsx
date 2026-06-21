@@ -393,11 +393,7 @@ function LocationSection({ showPage }) {
           }}
         >
           <div className="absolute inset-0 bg-warm/40 backdrop-grayscale" />
-          <svg className="absolute inset-0 z-10 h-full w-full opacity-90" viewBox="0 0 600 420" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M78 120 C 160 100, 210 160, 270 190 S 430 260, 500 310" fill="none" stroke="rgba(190,154,94,.65)" strokeWidth="4" strokeLinecap="round" strokeDasharray="10 14" />
-          </svg>
-          <div className="absolute left-[13%] top-[22%] z-20 grid h-[92px] w-[92px] place-items-center rounded-full border border-taupe/40 bg-warm/80 text-center text-xs font-black text-navy shadow-lg backdrop-blur">Panama<br />City</div>
-          <div className="absolute bottom-[22%] right-[15%] z-20 grid h-[92px] w-[92px] place-items-center rounded-full border border-taupe/40 bg-navy/90 text-center text-xs font-black text-white shadow-lg backdrop-blur">Coronado</div>
+          <div className="absolute right-[15%] top-[22%] z-20 grid h-[92px] w-[92px] place-items-center rounded-full border border-white/30 bg-navy/90 text-center text-xs font-black text-white shadow-lg backdrop-blur">Panama<br />City</div>
         </div>
       </div>
     </section>
