@@ -711,7 +711,7 @@ function LivingSection({ showPage }) {
           style={{ backgroundImage: `linear-gradient(90deg, rgba(13,31,45,.08), rgba(13,31,45,0)), url(${assets.living})` }}
           aria-label={tx('Residential property in Panama')}
         />
-        <div className="flex min-h-[clamp(480px,70vh,760px)] items-center justify-center bg-[rgba(239,233,224,.72)] px-6 py-14 lg:px-[clamp(48px,6vw,88px)]">
+        <div className="living-services-panel flex min-h-[clamp(480px,70vh,760px)] items-center justify-center bg-[rgba(239,233,224,.72)] px-6 py-14 lg:px-[clamp(48px,6vw,88px)]">
           <div className="w-full max-w-[520px]">
             <span className="eyebrow">{tx('Our Services')}</span>
             <h2 className="mb-4 text-[clamp(30px,3.1vw,46px)] uppercase leading-tight tracking-wide text-navy">
@@ -729,7 +729,7 @@ function LivingSection({ showPage }) {
             </ul>
 
             <div className="mt-8 flex justify-end">
-              <button className="btn bg-[rgb(190,154,94)] text-white hover:bg-[rgb(172,139,84)] hover:shadow-[0_16px_32px_rgba(190,154,94,.18)]" type="button" onClick={() => showPage('all-our-services')}>
+              <button className="living-services-button btn bg-[rgb(190,154,94)] text-white hover:bg-[rgb(172,139,84)] hover:shadow-[0_16px_32px_rgba(190,154,94,.18)]" type="button" onClick={() => showPage('all-our-services')}>
                 {tx('Open all services')} <ArrowRight size={16} />
               </button>
             </div>
@@ -834,7 +834,7 @@ function AboutPage({ showPage }) {
           </p>
           <button className="btn btn-primary mt-4" type="button" onClick={() => showPage('contact')}>{tx('Book a consultation')}</button>
         </div>
-        <div className="rounded-[30px] border border-[rgba(174,160,140,.22)] bg-white/60 p-8 shadow-soft">
+        <div className="how-we-work-card rounded-[30px] border border-[rgba(174,160,140,.22)] bg-white/60 p-8 shadow-soft">
           <h3 className="mb-4 text-2xl font-black text-navy">{tx('How we work')}</h3>
           {[
             'We start with a clear consultation and document review.',

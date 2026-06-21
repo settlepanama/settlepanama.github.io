@@ -1063,3 +1063,70 @@ html[data-theme='dark'] .location-learn-button:hover {
   background: rgb(255, 255, 255) !important;
   color: rgb(13, 31, 45) !important;
 }
+
+
+/* Dark mode: Why us / How we work */
+html[data-theme='dark'] .how-we-work-card {
+  border-color: rgba(243, 236, 226, .16) !important;
+  background: rgba(27, 45, 58, .72) !important;
+  box-shadow:
+    0 22px 52px rgba(0, 0, 0, .24),
+    inset 0 1px 0 rgba(255, 255, 255, .05) !important;
+  backdrop-filter: blur(10px);
+}
+
+html[data-theme='dark'] .how-we-work-card h3 {
+  color: rgb(243, 236, 226) !important;
+}
+
+html[data-theme='dark'] .how-we-work-card div {
+  border-color: rgba(243, 236, 226, .14) !important;
+  color: rgba(243, 236, 226, .72) !important;
+}
+
+/* Dark mode: Landing > Our Services panel */
+html[data-theme='dark'] .living-services-panel {
+  background: rgba(13, 31, 45, .78) !important;
+  box-shadow:
+    inset 1px 0 0 rgba(255, 255, 255, .05),
+    inset 0 1px 0 rgba(255, 255, 255, .04) !important;
+}
+
+html[data-theme='dark'] .living-services-panel .eyebrow {
+  color: rgba(214, 162, 134, .92) !important;
+}
+
+html[data-theme='dark'] .living-services-panel h2,
+html[data-theme='dark'] .living-services-panel li {
+  color: rgb(243, 236, 226) !important;
+}
+
+html[data-theme='dark'] .living-services-panel p {
+  color: rgba(243, 236, 226, .72) !important;
+}
+
+html[data-theme='dark'] .living-services-panel .text-gold {
+  color: rgb(225, 130, 89) !important;
+}
+
+html[data-theme='dark'] .living-services-panel li::before {
+  background: rgb(225, 130, 89) !important;
+  box-shadow: 0 0 0 4px rgba(225, 130, 89, .14) !important;
+}
+
+html[data-theme='dark'] .living-services-button {
+  border: 1px solid rgba(243, 236, 226, .38) !important;
+  background: rgba(243, 236, 226, .90) !important;
+  color: rgb(13, 31, 45) !important;
+  box-shadow:
+    0 16px 34px rgba(0, 0, 0, .24),
+    inset 0 1px 0 rgba(255, 255, 255, .34) !important;
+}
+
+html[data-theme='dark'] .living-services-button:hover {
+  background: rgb(255, 255, 255) !important;
+  color: rgb(13, 31, 45) !important;
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, .30),
+    inset 0 1px 0 rgba(255, 255, 255, .42) !important;
+}
