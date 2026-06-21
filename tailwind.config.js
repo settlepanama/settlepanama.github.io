@@ -4,9 +4,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Garet'],
-        serif: ['Garet'],
-        mono: ['Garet']
+        sans: ['Segoe UI'],
+        serif: ['Segoe UI'],
+        mono: ['Segoe UI']
       },
       colors: {
         navy: 'rgb(13,31,45)',

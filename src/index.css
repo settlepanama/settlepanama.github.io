@@ -1,26 +1,10 @@
-@font-face {
-  font-family: "Garet";
-  src: url("/assets/fonts/Garet-Book.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Garet";
-  src: url("/assets/fonts/Garet-Heavy.woff2") format("woff2");
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-
 html,
 body,
 button,
 input,
 select,
 textarea {
-  font-family: "Garet";
+  font-family: "Segoe UI";
 }
 
 *,
@@ -32,7 +16,7 @@ textarea {
 .font-serif,
 .font-sans,
 .font-mono {
-  font-family: "Garet" !important;
+  font-family: "Segoe UI" !important;
 }
 
 @tailwind base;
@@ -59,7 +43,7 @@ textarea {
 
   body {
     @apply m-0 bg-warm text-ink antialiased;
-    font-family: "Garet";
+    font-family: "Segoe UI";
     background:
       radial-gradient(circle at 12% 2%, rgba(122,145,129,.10), transparent 26%),
       radial-gradient(circle at 86% 4%, rgba(190,154,94,.09), transparent 24%),
