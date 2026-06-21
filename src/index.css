@@ -20,7 +20,7 @@ button,
 input,
 select,
 textarea {
-  font-family: "Garet", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "Garet";
 }
 
 *,
@@ -30,8 +30,9 @@ textarea {
 }
 
 .font-serif,
+.font-sans,
 .font-mono {
-  font-family: inherit !important;
+  font-family: "Garet" !important;
 }
 
 @tailwind base;
@@ -58,7 +59,7 @@ textarea {
 
   body {
     @apply m-0 bg-warm text-ink antialiased;
-    font-family: "Garet", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family: "Garet";
     background:
       radial-gradient(circle at 12% 2%, rgba(122,145,129,.10), transparent 26%),
       radial-gradient(circle at 86% 4%, rgba(190,154,94,.09), transparent 24%),
