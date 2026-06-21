@@ -549,47 +549,62 @@ function AboutPanamaPage({ showPage }) {
       eyebrow: 'USD',
       title: 'Dollarized economy',
       short: 'A familiar currency for daily life and planning.',
-      text: 'The U.S. dollar circulates legally in Panama, offering familiarity and practical monetary stability for many International Residents.'
+      text: 'The U.S. dollar circulates legally in Panama, offering familiarity and practical monetary stability for many International Residents.',
+      image: assets.aboutPanamaUsd
     },
     {
       eyebrow: 'Visa',
       title: 'Residency options',
       short: 'Several pathways for long-term living.',
-      text: 'Panama offers different residency pathways for retirees, investors, professionals and families planning a long-term move.'
+      text: 'Panama offers different residency pathways for retirees, investors, professionals and families planning a long-term move.',
+      image: assets.aboutPanamaResidency
     },
     {
       eyebrow: 'Hub',
       title: 'Global connectivity',
       short: 'A strong base for travel and business.',
-      text: 'With strong international flight connections, Panama makes it easier to travel frequently or stay connected to business and family abroad.'
+      text: 'With strong international flight connections, Panama makes it easier to travel frequently or stay connected to business and family abroad.',
+      image: assets.aboutPanamaConnectivity
     },
     {
       eyebrow: 'Sun',
       title: 'Warm weather year-round',
       short: 'Outdoor living, beaches and tropical days.',
-      text: 'A tropical climate, access to beaches and outdoor living make Panama appealing for those seeking sunshine throughout the year.'
+      text: 'A tropical climate, access to beaches and outdoor living make Panama appealing for those seeking sunshine throughout the year.',
+      image: assets.aboutPanamaWeather
     },
     {
       eyebrow: 'Cost',
       title: 'Competitive cost of living',
       short: 'Lifestyle flexibility depending on the area.',
-      text: 'Depending on the area and lifestyle, Panama can offer a more competitive cost of living than many North American or European markets.'
+      text: 'Depending on the area and lifestyle, Panama can offer a more competitive cost of living than many North American or European markets.',
+      image: assets.aboutPanamaCost
     },
     {
       eyebrow: 'Life',
       title: 'Many ways to live',
       short: 'City, beach, mountains or islands.',
-      text: 'Choose between city life, beach towns, mountain communities or island settings based on your pace, goals and preferences.'
+      text: 'Choose between city life, beach towns, mountain communities or island settings based on your pace, goals and preferences.',
+      image: assets.aboutPanamaLifestyle
     }
   ];
 
-  const [activeHighlight, setActiveHighlight] = useState(panamaHighlights[0]);
+  const [activeHighlightIndex, setActiveHighlightIndex] = useState(0);
+  const activeHighlight = panamaHighlights[activeHighlightIndex];
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveHighlightIndex((currentIndex) => (currentIndex + 1) % panamaHighlights.length);
+    }, 5200);
+
+    return () => window.clearInterval(interval);
+  }, []);
 
   return (
     <section
       className="about-panama-page"
       style={{
-        backgroundImage: `linear-gradient(180deg, rgba(13,31,45,.66) 0%, rgba(13,31,45,.58) 28%, rgba(13,31,45,.48) 100%), url(${assets.aboutPanamaHero})`
+        backgroundImage: `linear-gradient(180deg, rgba(13,31,45,.66) 0%, rgba(13,31,45,.58) 28%, rgba(13,31,45,.48) 100%), url(${activeHighlight.image})`
       }}
     >
       <div className="about-panama-shell">
@@ -609,12 +624,12 @@ function AboutPanamaPage({ showPage }) {
           </div>
 
           <div className="about-panama-options" aria-label="Reasons to choose Panama">
-            {panamaHighlights.map((item) => (
+            {panamaHighlights.map((item, index) => (
               <button
                 key={item.title}
-                className={`about-panama-option ${activeHighlight.title === item.title ? 'is-active' : ''}`}
+                className={`about-panama-option ${activeHighlightIndex === index ? 'is-active' : ''}`}
                 type="button"
-                onClick={() => setActiveHighlight(item)}
+                onClick={() => setActiveHighlightIndex(index)}
               >
                 <span className="about-panama-option-kicker">{item.eyebrow}</span>
                 <span className="about-panama-option-title">{item.title}</span>

@@ -10,5 +10,11 @@ export const assets = {
   landingConsultation: assetUrl('assets/images/landing-consultation.jpg'),
   landingPaperwork: assetUrl('assets/images/landing-paperwork.jpg'),
   landingPersonalizedMove: assetUrl('assets/images/landing-personalized-move.jpg'),
-  aboutPanamaHero: assetUrl('assets/images/about-panama-hero.jpg')
+  aboutPanamaHero: assetUrl('assets/images/about-panama-hero.jpg'),
+  aboutPanamaUsd: assetUrl('assets/images/about-panama-usd.jpg'),
+  aboutPanamaResidency: assetUrl('assets/images/about-panama-residency.jpg'),
+  aboutPanamaConnectivity: assetUrl('assets/images/about-panama-connectivity.jpg'),
+  aboutPanamaWeather: assetUrl('assets/images/about-panama-weather.jpg'),
+  aboutPanamaCost: assetUrl('assets/images/about-panama-cost.jpg'),
+  aboutPanamaLifestyle: assetUrl('assets/images/about-panama-lifestyle.jpg')
 };
