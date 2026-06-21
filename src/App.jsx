@@ -606,7 +606,7 @@ function Header({ page, showPage }) {
               <Moon size={17} />
             </button>
             <button className="text-[13px] font-black text-navy" type="button" onClick={() => go('contact')}>
-              {tx('Sign in')} <span className="inline-block transition group-hover:translate-x-1">→</span>
+              {tx('Contact')} <span className="inline-block transition group-hover:translate-x-1">→</span>
             </button>
           </div>
         </div>
