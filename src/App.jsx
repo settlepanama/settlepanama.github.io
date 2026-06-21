@@ -265,7 +265,7 @@ function Header({ page, showPage }) {
       </header>
 
       <div className="nav-wave h-4 w-full overflow-hidden">
-        <svg className="block h-full w-full" viewBox="0 0 1440 48" preserveAspectRatio="none" aria-hidden="true">
+        <svg className="block h-full w-full" viewBox="0 0 1440 52" preserveAspectRatio="none" aria-hidden="true">
           <path className="nav-wave-soft" d="M0 22 C 120 32, 220 10, 340 22 S 560 34, 700 22 S 930 8, 1080 22 S 1320 34, 1440 20" />
           <path className="nav-wave-main" d="M0 28 C 140 12, 230 14, 360 28 S 590 42, 720 28 S 960 8, 1110 28 S 1320 44, 1440 26" />
         </svg>
@@ -313,7 +313,7 @@ function LocationSection({ showPage }) {
           <p className="max-w-[450px] text-base leading-relaxed text-ink/65">
             We support practical relocation and settlement needs across key residential areas, beach communities and city neighborhoods.
           </p>
-          <button className="mt-3 inline-flex items-center gap-2 rounded-full border border-[rgba(174,160,140,.34)] bg-white/60 px-4 py-3.5 text-sm font-black text-navy shadow-sm transition hover:-translate-y-0.5 hover:bg-white/80" type="button" onClick={() => showPage('contact')}>
+          <button className="mt-3 inline-flex items-center gap-2 rounded-full border border-[rgba(174,160,140,.34)] bg-white/60 px-4 py-3.5 text-sm font-black text-navy shadow-sm transition hover:bg-white/80" type="button" onClick={() => showPage('contact')}>
             Ask about your area <ArrowRight size={16} />
           </button>
         </div>

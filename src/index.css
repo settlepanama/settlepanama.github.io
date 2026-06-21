@@ -80,7 +80,7 @@ textarea {
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border-0 px-5 py-3.5 text-sm font-black transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_16px_32px_rgba(13,31,45,.11)];
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-0 px-5 py-3.5 text-sm font-black transition duration-200 hover:shadow-[0_16px_32px_rgba(13,31,45,.11)];
   }
 
   .btn-primary {
@@ -141,17 +141,17 @@ textarea {
 }
 
 .nav-wave-main {
-  stroke: rgba(174,160,140,.46);
+  stroke: rgba(174, 160, 140, .46);
   stroke-width: 1.1;
   stroke-dasharray: 22 18;
-  animation: tideLine 8s linear infinite;
+  animation: none;
 }
 
 .nav-wave-soft {
-  stroke: rgba(122,145,129,.24);
+  stroke: rgba(122, 145, 129, .24);
   stroke-width: .9;
   stroke-dasharray: 120 42;
-  animation: tideLine 12s linear infinite reverse;
+  animation: none;
 }
 
 @keyframes shoreCrash {
@@ -203,3 +203,10 @@ textarea {
     }
   }
 
+
+
+.nav-wave-main,
+.nav-wave-soft {
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
