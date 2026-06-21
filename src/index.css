@@ -365,7 +365,7 @@ textarea {
   position: relative;
   width: min(100%, 1240px);
   margin-inline: auto;
-  padding: 104px 24px 82px;
+  padding: 104px 24px 118px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -374,11 +374,14 @@ textarea {
 .landing-panama-content {
   width: min(100%, 590px);
   padding: 22px 22px 20px;
-  border: 1px solid rgba(255,255,255,.16);
+  border: 1px solid rgba(255,255,255,.26);
   border-radius: 24px;
-  background: rgba(255,255,255,.05);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 20px 48px rgba(13,31,45,.10);
+  background: rgba(255,255,255,.075);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 22px 54px rgba(13,31,45,.18),
+    inset 0 1px 0 rgba(255,255,255,.24),
+    inset 0 -1px 0 rgba(13,31,45,.08);
 }
 
 .landing-panama-content .eyebrow,
@@ -388,11 +391,14 @@ textarea {
 }
 
 .landing-panama-badge {
-  border: 1px solid rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.26);
   border-radius: 18px;
-  background: rgba(255,255,255,.06);
-  backdrop-filter: blur(8px);
+  background: rgba(255,255,255,.075);
+  backdrop-filter: blur(10px);
   padding: 12px 14px;
+  box-shadow:
+    0 14px 32px rgba(13,31,45,.14),
+    inset 0 1px 0 rgba(255,255,255,.20);
 }
 
 .landing-panama-bullets {
@@ -424,7 +430,7 @@ textarea {
   position: absolute;
   left: 24px;
   right: 24px;
-  bottom: 36px;
+  bottom: 72px;
   display: flex;
 }
 
@@ -434,8 +440,8 @@ textarea {
   gap: 10px;
   min-height: 48px;
   border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.34);
-  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.42);
+  background: rgba(255,255,255,.14);
   color: rgba(255,255,255,.98);
   padding: 0 18px;
   font-size: 13px;
@@ -448,9 +454,9 @@ textarea {
 }
 
 .landing-panama-image-cta:hover {
-  background: rgba(255,255,255,.18);
-  border-color: rgba(255,255,255,.52);
-  box-shadow: 0 14px 28px rgba(13,31,45,.18);
+  background: rgba(255,255,255,.22);
+  border-color: rgba(255,255,255,.62);
+  box-shadow: 0 16px 34px rgba(13,31,45,.22);
 }
 
 .reveal-on-scroll {
@@ -487,7 +493,7 @@ textarea {
   }
 
   .landing-panama-inner {
-    padding: 82px 22px 88px;
+    padding: 82px 22px 104px;
   }
 
   .landing-panama-content,
@@ -503,7 +509,7 @@ textarea {
 
   .landing-panama-cta-row {
     justify-content: flex-start;
-    bottom: 28px;
+    bottom: 52px;
     left: 22px;
     right: 22px;
   }
@@ -511,7 +517,7 @@ textarea {
 
 @media (max-width: 767px) {
   .landing-panama-inner {
-    padding: 72px 20px 88px;
+    padding: 72px 20px 104px;
   }
 
   .landing-panama-badge {
@@ -526,4 +532,30 @@ textarea {
     width: 100%;
     justify-content: center;
   }
+}
+
+
+.landing-panama-content h2 {
+  text-shadow:
+    0 2px 18px rgba(13,31,45,.42),
+    0 1px 2px rgba(13,31,45,.35);
+}
+
+.landing-panama-content p,
+.landing-panama-bullet,
+.landing-panama-image-cta {
+  text-shadow:
+    0 1px 12px rgba(13,31,45,.38),
+    0 1px 1px rgba(13,31,45,.28);
+}
+
+.landing-panama-badge {
+  outline: 1px solid rgba(13,31,45,.10);
+  outline-offset: -1px;
+}
+
+.landing-panama-dot {
+  box-shadow:
+    0 0 0 3px rgba(239,233,224,.12),
+    0 1px 8px rgba(13,31,45,.22);
 }
