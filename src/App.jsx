@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { Menu, Moon, ArrowRight } from 'lucide-react';
 import { assets } from './lib/assets.js';
 
-const pages = ['landing', 'about', 'about-panama', 'landing-in-panama', 'contact', 'templates'];
-const landingSections = ['location', 'relocate', 'living', 'consultation'];
+const pages = ['landing', 'about', 'about-panama', 'all-our-services', 'contact', 'templates'];
+const landingSections = ['location', 'relocate', 'our-services', 'consultation'];
 
 const services = [
   'Residency / E-Cédula',
@@ -19,22 +19,22 @@ const services = [
 const features = [
   {
     title: 'Before You Settle',
-    text: 'Asesoría before the move: relocation consultation, area guidance, timelines, documents and first decisions.'
+    text: 'Guidance before the move: relocation consultation, area guidance, timelines, documents and first decisions.'
   },
   {
     title: 'Settling in Panama',
-    text: 'Servicios during the move: paperwork guidance, housing coordination, setup support and local onboarding.'
+    text: 'Support during the move: paperwork guidance, housing coordination, setup support and local onboarding.'
   },
   {
     title: 'Stay Settled',
-    text: 'Cuidados, protección y mantenimientos after arrival: home watch, vendor coordination and ongoing local support.'
+    text: 'Care, protection and maintenance after arrival: home watch, vendor coordination and ongoing local support.'
   }
 ];
 
 const landingInPanamaSections = [
   {
     eyebrow: 'Before You Settle',
-    title: 'Asesoría before the move, so you can plan your next chapter with clarity.',
+    title: 'Guidance before the move, so you can plan your next chapter with clarity.',
     bullets: [
       'Personalized relocation consultation',
       'Residency and visa options',
@@ -53,7 +53,7 @@ const landingInPanamaSections = [
   },
   {
     eyebrow: 'Settling in Panama',
-    title: 'Servicios during your move, from paperwork guidance to local setup support.',
+    title: 'Support during your move, from paperwork guidance to local setup support.',
     bullets: [
       'Document preparation guidance',
       'Appointment coordination',
@@ -72,7 +72,7 @@ const landingInPanamaSections = [
   },
   {
     eyebrow: 'Stay Settled',
-    title: 'Cuidados, protección y mantenimientos after arrival, so life here keeps running smoothly.',
+    title: 'Care, protection and maintenance after arrival, so life here keeps running smoothly.',
     bullets: [
       'Home watch',
       'Vendor coordination',
@@ -171,8 +171,17 @@ function useRevealOnScroll() {
 }
 
 function useHashRouter() {
+  const normalizeHash = (value) => {
+    const hash = value.toLowerCase().replace(/\s+/g, '-');
+
+    if (hash === 'landing-in-panama') return 'all-our-services';
+    if (hash === 'living') return 'our-services';
+
+    return hash;
+  };
+
   const initial = () => {
-    const hash = window.location.hash.replace('#', '') || 'landing';
+    const hash = normalizeHash(window.location.hash.replace('#', '') || 'landing');
     return pages.includes(hash) ? hash : 'landing';
   };
 
@@ -205,7 +214,7 @@ function useHashRouter() {
 
   useEffect(() => {
     const handleHash = () => {
-      const hash = window.location.hash.replace('#', '') || 'landing';
+      const hash = normalizeHash(window.location.hash.replace('#', '') || 'landing');
 
       if (pages.includes(hash)) {
         showPage(hash, { updateHash: false, scrollTop: true });
@@ -234,9 +243,9 @@ function Header({ page, showPage }) {
   const [languageOpen, setLanguageOpen] = useState(false);
   const [language, setLanguage] = useState('English');
   const navItems = [
-    ['about', 'About'],
+    ['about', 'Why us'],
     ['about-panama', 'About Panama'],
-    ['landing-in-panama', 'Our Services'],
+    ['all-our-services', 'Our Services'],
     ['contact', 'Contact']
   ];
 
@@ -349,10 +358,10 @@ function Hero({ showPage, scrollLandingSection }) {
             Practical relocation, settlement and property support for International Residents who want trusted local hands in Panama.
           </p>
           <div className="flex flex-wrap gap-3">
-            <button className="btn bg-sand text-navy hover:bg-white" type="button" onClick={() => scrollLandingSection('relocate')}>
+            <button className="btn bg-sand text-navy hover:bg-white" type="button" onClick={() => scrollLandingSection('location')}>
               Start your relocation <ArrowRight size={16} />
             </button>
-            <button className="btn border border-sand/50 bg-white/10 text-white backdrop-blur hover:bg-sand/15" type="button" onClick={() => scrollLandingSection('living')}>
+            <button className="btn border border-sand/50 bg-white/10 text-white backdrop-blur hover:bg-sand/15" type="button" onClick={() => scrollLandingSection('our-services')}>
               View all our services
             </button>
           </div>
@@ -395,9 +404,9 @@ function LocationSection({ showPage }) {
   );
 }
 
-function LivingSection() {
+function LivingSection({ showPage }) {
   return (
-    <section className="w-full overflow-hidden" id="living">
+    <section className="w-full overflow-hidden" id="our-services">
       <div className="grid w-full lg:grid-cols-2">
         <div
           className="min-h-[380px] bg-cover bg-center lg:min-h-[clamp(480px,70vh,760px)]"
@@ -411,7 +420,7 @@ function LivingSection() {
               Support before, during and after <span className="text-gold">your move.</span>
             </h2>
             <p className="mb-6 max-w-[460px] text-left leading-relaxed text-ink/65">
-              From asesoría and setup services to care, protection and maintenance once you are already in Panama.
+              From early guidance and setup services to care, protection and maintenance once you are already in Panama.
             </p>
             <ul className="grid list-none gap-x-6 gap-y-3.5 p-0 sm:grid-cols-2">
               {services.map((service) => (
@@ -420,6 +429,12 @@ function LivingSection() {
                 </li>
               ))}
             </ul>
+
+            <div className="mt-8 flex justify-end">
+              <button className="btn bg-[rgb(190,154,94)] text-white hover:bg-[rgb(172,139,84)] hover:shadow-[0_16px_32px_rgba(190,154,94,.18)]" type="button" onClick={() => showPage('all-our-services')}>
+                Open all services <ArrowRight size={16} />
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -461,7 +476,7 @@ function RelocationSection({ showPage, scrollLandingSection }) {
         </div>
 
         <div className="mt-10 flex justify-center">
-          <button className="btn bg-navy text-white hover:bg-[rgb(18,42,58)] hover:shadow-[0_16px_32px_rgba(13,31,45,.11)]" type="button" onClick={() => scrollLandingSection('living')}>
+          <button className="btn bg-navy text-white hover:bg-[rgb(18,42,58)] hover:shadow-[0_16px_32px_rgba(13,31,45,.11)]" type="button" onClick={() => scrollLandingSection('our-services')}>
             See our services <ArrowRight size={16} />
           </button>
         </div>
@@ -482,7 +497,7 @@ function PreFooter({ showPage }) {
           Schedule a consultation <ArrowRight size={16} />
         </button>
         <p className="m-0 max-w-[820px] text-[15px] text-white/75">
-          Call <strong className="font-black text-white">+507 6912-7505</strong> or write on <strong className="font-black text-white">WhatsApp</strong>, <strong className="font-black text-white">Telegram</strong> or <strong className="font-black text-white">hello@settlepanama.demo</strong>
+          Call <strong className="font-black text-white">+507 6912-7505</strong> or write on <strong className="font-black text-white">WhatsApp</strong>, <strong className="font-black text-white">Telegram</strong> or <strong className="font-black text-white">hello@settlepanama.com</strong>
         </p>
       </div>
     </section>
@@ -495,7 +510,7 @@ function LandingPage({ showPage, scrollLandingSection }) {
       <Hero showPage={showPage} scrollLandingSection={scrollLandingSection} />
       <LocationSection showPage={showPage} />
       <RelocationSection showPage={showPage} scrollLandingSection={scrollLandingSection} />
-      <LivingSection />
+      <LivingSection showPage={showPage} />
       <PreFooter showPage={showPage} />
     </>
   );
@@ -506,7 +521,7 @@ function AboutPage({ showPage }) {
     <section className="section min-h-[calc(100vh-92px)]">
       <div className="site-view grid items-center gap-11 lg:grid-cols-[.95fr_1.05fr]">
         <div>
-          <span className="eyebrow">About</span>
+          <span className="eyebrow">Why us</span>
           <h1 className="heading-xl text-ink">Local hands for a calmer move.</h1>
           <p className="max-w-[560px] text-lg leading-relaxed text-ink/65">
             Settle Panama helps International Residents handle the practical, local and time-sensitive pieces of moving, settling and maintaining life in Panama.
@@ -715,9 +730,9 @@ function Footer({ showPage }) {
         </div>
         <div className="flex flex-wrap gap-4 font-extrabold text-sand">
           {[
-            ['about', 'About'],
+            ['about', 'Why us'],
             ['about-panama', 'About Panama'],
-            ['landing-in-panama', 'Our Services'],
+            ['all-our-services', 'Our Services'],
             ['contact', 'Contact']
           ].map(([item, label]) => (
             <button key={item} className="transition hover:text-gold" type="button" onClick={() => showPage(item)}>
@@ -793,7 +808,7 @@ function renderPage(page, showPage, scrollLandingSection) {
       return <AboutPage showPage={showPage} />;
     case 'about-panama':
       return <AboutPanamaPage showPage={showPage} />;
-    case 'landing-in-panama':
+    case 'all-our-services':
       return <LandingInPanamaPage showPage={showPage} />;
     case 'contact':
       return <ContactPage />;
