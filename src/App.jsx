@@ -1209,15 +1209,7 @@ function Footer({ showPage }) {
         <div>
           <img className="mb-3 block w-[156px] brightness-0 invert" src={assets.logo} alt="Settle Panama" />
           <p className="m-0 text-white/70">{tx('Relocation, settlement and property support for International Residents in Panama.')}</p>
-          <a
-            className="safeguard-credit mt-5 inline-flex items-center gap-3 rounded-full border border-white/12 bg-white/5 px-3.5 py-2 text-xs font-bold text-white/68 transition hover:border-white/26 hover:bg-white/10 hover:text-white"
-            href="https://safeguardccs.com"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img className="h-5 w-auto opacity-85" src={assets.safeguardLogo} alt="SafeGuard CCS" />
-            <span>{tx('Digital experience by SafeGuard CCS')}</span>
-          </a>
+
         </div>
         <div className="flex flex-wrap gap-4 font-extrabold text-sand">
           {[
@@ -1232,6 +1224,19 @@ function Footer({ showPage }) {
           ))}
         </div>
       </div>
+        <div className="footer-utility-row mt-12 flex flex-col items-center justify-center gap-3 border-t border-white/10 pt-6 text-center text-xs text-white/48 md:flex-row md:flex-wrap md:gap-x-5 md:gap-y-2">
+          <span>© 2026 Settle Panama. All rights reserved.</span>
+          <span className="hidden text-white/22 md:inline">•</span>
+          <a
+            className="safeguard-credit inline-flex items-center justify-center gap-2 text-white/52 transition hover:text-white"
+            href="https://safeguardccs.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img className="h-4 w-auto opacity-70" src={assets.safeguardLogo} alt="SafeGuard CCS" />
+            <span>{tx('Digital experience by SafeGuard CCS')}</span>
+          </a>
+        </div>
     </footer>
   );
 }
