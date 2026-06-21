@@ -368,7 +368,7 @@ function LivingSection() {
   );
 }
 
-function RelocationSection() {
+function RelocationSection({ showPage }) {
   const [hasRelocateBackground, setHasRelocateBackground] = useState(false);
 
   useEffect(() => {
@@ -400,6 +400,12 @@ function RelocationSection() {
             </article>
           ))}
         </div>
+
+        <div className="mt-10 flex justify-center">
+          <button className="btn bg-navy text-white hover:bg-[rgb(18,42,58)] hover:shadow-[0_16px_32px_rgba(13,31,45,.11)]" type="button" onClick={() => showPage('pricing')}>
+            View relocation plans <ArrowRight size={16} />
+          </button>
+        </div>
       </div>
     </section>
   );
@@ -429,7 +435,7 @@ function LandingPage({ showPage, scrollLandingSection }) {
     <>
       <Hero showPage={showPage} scrollLandingSection={scrollLandingSection} />
       <LocationSection showPage={showPage} />
-      <RelocationSection />
+      <RelocationSection showPage={showPage} />
       <LivingSection />
       <PreFooter showPage={showPage} />
     </>
