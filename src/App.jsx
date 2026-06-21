@@ -7,13 +7,13 @@ const landingSections = ['location', 'relocate', 'our-services', 'consultation']
 
 const services = [
   'Residency / E-Cédula',
-  'Driving & Vehicle Setup',
+  'Driver’s license homologation',
   'Bank accounts',
   'Medical care / insurance',
+  'Airport transfer to destination',
   'Home services install/support',
-  'Renting or buying support',
   'Pet import assistance',
-  'Property care and home watch'
+  'Home concierge / home watch'
 ];
 
 const features = [
@@ -23,7 +23,7 @@ const features = [
   },
   {
     title: 'Settling in Panama',
-    text: 'Support during the move: paperwork guidance, housing coordination, setup support and local onboarding.'
+    text: 'Support during the move: paperwork guidance, airport transfer, setup support and local onboarding.'
   },
   {
     title: 'Stay Settled',
@@ -42,7 +42,7 @@ const landingInPanamaSections = [
       'Healthcare and insurance guidance',
       'Banking information',
       'Neighborhood recommendations',
-      'Housing and rental advice',
+      'Airport arrival planning',
       'Relocation timelines'
     ],
     cta: 'Plan Before You Settle',
@@ -59,8 +59,8 @@ const landingInPanamaSections = [
       'Appointment coordination',
       'Government process assistance',
       'Translation referrals',
-      'House hunting assistance',
-      'Realtor coordination',
+      'Airport transfer to destination',
+      'Driver’s license homologation guidance',
       'Internet and mobile service setup',
       'Move-in coordination'
     ],
@@ -74,11 +74,11 @@ const landingInPanamaSections = [
     eyebrow: 'Stay Settled',
     title: 'Care, protection and maintenance after arrival, so life here keeps running smoothly.',
     bullets: [
-      'Home watch',
+      'Home concierge / home watch',
       'Vendor coordination',
       'Maintenance follow-up',
       'Household sourcing',
-      'Vehicle assistance',
+      'Home concierge / home watch',
       'Concierge recommendations',
       'Local liaison support',
       'Ongoing resident support'
@@ -938,7 +938,7 @@ function ContactWidget({ showPage }) {
             <span>Call +507 6912-7505</span>
           </a>
 
-          <div className="rounded-[10px] border border-white/35 bg-navy/80 px-3 py-2 text-center text-xs text-white shadow-lg backdrop-blur">We work 09:00–17:00 Panama time</div>
+          <div className="rounded-[10px] border border-white/35 bg-navy/80 px-3 py-2 text-center text-xs text-white shadow-lg backdrop-blur">We answer until 12:00 AM Panama time</div>
         </div>
       )}
 
