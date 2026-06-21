@@ -423,7 +423,7 @@ function PreFooter({ showPage }) {
           Schedule a consultation <ArrowRight size={16} />
         </button>
         <p className="m-0 max-w-[820px] text-[15px] text-white/75">
-          Call <strong className="font-black text-white">+507 6000-0000</strong> or write on <strong className="font-black text-white">WhatsApp</strong>, <strong className="font-black text-white">Telegram</strong> or <strong className="font-black text-white">hello@settlepanama.demo</strong>
+          Call <strong className="font-black text-white">+507 6912-7505</strong> or write on <strong className="font-black text-white">WhatsApp</strong>, <strong className="font-black text-white">Telegram</strong> or <strong className="font-black text-white">hello@settlepanama.demo</strong>
         </p>
       </div>
     </section>
@@ -600,12 +600,12 @@ function ContactWidget({ showPage }) {
     <div className="fixed bottom-6 right-6 z-[60] grid justify-items-end gap-3 max-[720px]:bottom-[18px] max-[720px]:right-[18px]">
       {open && (
         <div className="flex animate-[contactMenuIn_.26s_ease_both] flex-col items-stretch justify-end gap-2 font-extrabold" aria-label="Contact options">
-          <a className={`${optionBaseClass} bg-green-600 hover:bg-green-700`} href="https://wa.me/5076000000" title="Message us on WhatsApp">
+          <a className={`${optionBaseClass} bg-green-600 hover:bg-green-700`} href="https://wa.me/50769127505" title="Message us on WhatsApp">
             <span className="h-4 w-4 flex-none"><WhatsAppIcon /></span>
             <span>Message us on WhatsApp</span>
           </a>
 
-          <a className={`${optionBaseClass} bg-blue-500 hover:bg-blue-600`} href="https://t.me/settlepanama" title="Message us on Telegram">
+          <a className={`${optionBaseClass} bg-blue-500 hover:bg-blue-600`} href="https://t.me/+50769127505" title="Message us on Telegram">
             <span className="h-4 w-4 flex-none"><TelegramIcon /></span>
             <span>Message us on Telegram</span>
           </a>
@@ -615,9 +615,9 @@ function ContactWidget({ showPage }) {
             <span>Book a free consultation</span>
           </button>
 
-          <a className={`${optionBaseClass} bg-navy hover:bg-[rgb(18,42,58)]`} href="tel:+5076000000" title="Call us">
+          <a className={`${optionBaseClass} bg-navy hover:bg-[rgb(18,42,58)]`} href="tel:+50769127505" title="Call us">
             <span className="h-4 w-4 flex-none"><PhoneIcon /></span>
-            <span>Call +507 6000-0000</span>
+            <span>Call +507 6912-7505</span>
           </a>
 
           <div className="rounded-[10px] border border-white/35 bg-navy/80 px-3 py-2 text-center text-xs text-white shadow-lg backdrop-blur">We work 09:00–17:00 Panama time</div>
