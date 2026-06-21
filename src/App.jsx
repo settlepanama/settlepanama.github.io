@@ -544,45 +544,67 @@ function AboutPage({ showPage }) {
 }
 
 function AboutPanamaPage({ showPage }) {
+  const panamaHighlights = [
+    {
+      title: 'Dollarized economy',
+      text: 'The U.S. dollar circulates legally in Panama, offering familiarity and practical monetary stability for many International Residents.'
+    },
+    {
+      title: 'Residency options',
+      text: 'Panama offers different residency pathways for retirees, investors, professionals and families planning a long-term move.'
+    },
+    {
+      title: 'Global connectivity',
+      text: 'With strong international flight connections, Panama makes it easier to travel frequently or stay connected to business and family abroad.'
+    },
+    {
+      title: 'Warm weather year-round',
+      text: 'A tropical climate, access to beaches and outdoor living make Panama appealing for those seeking sunshine throughout the year.'
+    },
+    {
+      title: 'Competitive cost of living',
+      text: 'Depending on the area and lifestyle, Panama can offer a more competitive cost of living than many North American or European markets.'
+    },
+    {
+      title: 'Many ways to live',
+      text: 'Choose between city life, beach towns, mountain communities or island settings based on your pace, goals and preferences.'
+    }
+  ];
+
   return (
-    <section className="section min-h-[calc(100vh-92px)] bg-warm">
-      <div className="site-view">
-        <div className="mx-auto mb-12 max-w-[820px] text-center">
-          <span className="eyebrow">About Panama</span>
-          <h1 className="heading-xl text-ink">Your new life in Panama starts here.</h1>
-          <p className="mx-auto max-w-[720px] text-ink/65">
-            Panama can be city, beach, mountains, business, retirement, investment or a slower daily rhythm. The right choice depends on how you want to live.
+    <section
+      className="about-panama-page"
+      style={{
+        backgroundImage: `linear-gradient(180deg, rgba(13,31,45,.66) 0%, rgba(13,31,45,.58) 28%, rgba(13,31,45,.48) 100%), url(${assets.aboutPanamaHero})`
+      }}
+    >
+      <div className="about-panama-shell">
+        <div className="about-panama-hero">
+          <span className="eyebrow text-sand/80">About Panama</span>
+          <h1 className="heading-xl text-white">Your new life in Panama starts here.</h1>
+          <p className="mx-auto max-w-[860px] text-lg leading-relaxed text-white/84">
+            Discover why thousands of expats, retirees, entrepreneurs, and investors choose Panama for its lifestyle, stability, connectivity, and endless opportunities.
           </p>
         </div>
 
-        <div className="grid gap-5 lg:grid-cols-3">
-          <article className="feature-card">
-            <span className="eyebrow">Areas</span>
-            <h2 className="mb-3 text-2xl font-black leading-tight tracking-[-.045em] text-navy">Find the right place.</h2>
-            <p className="text-base leading-relaxed text-ink/65">
-              Compare city neighborhoods, beach communities and quieter residential areas based on lifestyle, mobility and budget.
-            </p>
-          </article>
-
-          <article className="feature-card">
-            <span className="eyebrow">Daily life</span>
-            <h2 className="mb-3 text-2xl font-black leading-tight tracking-[-.045em] text-navy">Understand the essentials.</h2>
-            <p className="text-base leading-relaxed text-ink/65">
-              Get oriented around healthcare, banking, housing, transportation, connectivity and the practical details of living here.
-            </p>
-          </article>
-
-          <article className="feature-card">
-            <span className="eyebrow">Local guidance</span>
-            <h2 className="mb-3 text-2xl font-black leading-tight tracking-[-.045em] text-navy">Move with context.</h2>
-            <p className="text-base leading-relaxed text-ink/65">
-              We help you ask better questions, avoid confusion and make decisions with local support before, during and after the move.
-            </p>
-          </article>
+        <div className="about-panama-grid">
+          {panamaHighlights.map((item) => (
+            <article key={item.title} className="about-panama-card">
+              <span className="about-panama-card-dot" aria-hidden="true" />
+              <div>
+                <h2 className="about-panama-card-title">{item.title}</h2>
+                <p className="about-panama-card-text">{item.text}</p>
+              </div>
+            </article>
+          ))}
         </div>
 
-        <div className="mt-10 flex justify-center">
-          <button className="btn bg-navy text-white hover:bg-[rgb(18,42,58)] hover:shadow-[0_16px_32px_rgba(13,31,45,.11)]" type="button" onClick={() => showPage('contact')}>
+        <div className="about-panama-cta">
+          <button
+            className="btn border border-white/25 bg-white/12 text-white hover:bg-white/18 hover:shadow-[0_16px_32px_rgba(13,31,45,.16)]"
+            type="button"
+            onClick={() => showPage('contact')}
+          >
             Ask us about Panama <ArrowRight size={16} />
           </button>
         </div>

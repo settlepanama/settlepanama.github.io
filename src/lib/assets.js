@@ -9,5 +9,6 @@ export const assets = {
   contact: assetUrl('assets/images/contact.jpg'),
   landingConsultation: assetUrl('assets/images/landing-consultation.jpg'),
   landingPaperwork: assetUrl('assets/images/landing-paperwork.jpg'),
-  landingPersonalizedMove: assetUrl('assets/images/landing-personalized-move.jpg')
+  landingPersonalizedMove: assetUrl('assets/images/landing-personalized-move.jpg'),
+  aboutPanamaHero: assetUrl('assets/images/about-panama-hero.jpg')
 };
