@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { Menu, Moon, ArrowRight } from 'lucide-react';
 import { assets } from './lib/assets.js';
 
@@ -91,6 +91,282 @@ const landingInPanamaSections = [
   }
 ];
 
+
+const translations = {
+  es: {
+    "English": "Inglés",
+    "Spanish": "Español",
+    "French": "Francés",
+    "Relocation, settlement and property support for International Residents in Panama.": "Apoyo de reubicación, instalación y servicios de propiedad para residentes internacionales en Panamá.",
+    "Why us": "Por qué nosotros",
+    "About Panama": "Sobre Panamá",
+    "Our Services": "Servicios",
+    "Contact": "Contacto",
+    "Sign in": "Contacto",
+    "Open navigation": "Abrir navegación",
+    "Language": "Idioma",
+    "Theme": "Tema",
+    "Relocation concierge": "Concierge de reubicación",
+    "Move to Panama without feeling lost.": "Múdate a Panamá sin sentirte perdido.",
+    "Practical relocation, settlement and property support for International Residents who want trusted local hands in Panama.": "Apoyo práctico de reubicación, instalación y servicios de propiedad para residentes internacionales que quieren apoyo local confiable en Panamá.",
+    "Start your relocation": "Empieza tu reubicación",
+    "View all our services": "Ver todos los servicios",
+    "Location": "Ubicación",
+    "Your new life in Panama starts here.": "Tu nueva vida en Panamá empieza aquí.",
+    "We support practical relocation and settlement needs across key residential areas, beach communities and city neighborhoods.": "Apoyamos necesidades prácticas de reubicación e instalación en zonas residenciales clave, comunidades de playa y barrios urbanos.",
+    "Learn more about Panama": "Conoce más sobre Panamá",
+    "Panama residential skyline": "Vista residencial de Panamá",
+    "Residential property in Panama": "Propiedad residencial en Panamá",
+    "Support before, during and after": "Apoyo antes, durante y después de",
+    "your move.": "tu mudanza.",
+    "From early guidance and setup services to care, protection and maintenance once you are already in Panama.": "Desde orientación inicial y servicios de instalación hasta cuidado, protección y mantenimiento cuando ya estés en Panamá.",
+    "Open all services": "Abrir todos los servicios",
+    "Residency / E-Cédula": "Residencia / E-Cédula",
+    "Driver’s license homologation": "Homologación de licencia de conducir",
+    "Bank accounts": "Cuentas bancarias",
+    "Medical care / insurance": "Atención médica / seguros",
+    "Airport transfer to destination": "Traslado del aeropuerto al destino",
+    "Home services install/support": "Instalación y soporte de servicios del hogar",
+    "Pet import assistance": "Asistencia para importación de mascotas",
+    "Home concierge / home watch": "Concierge del hogar / supervisión de vivienda",
+    "Relocation": "Reubicación",
+    "A softer landing in Panama.": "Una llegada más sencilla a Panamá.",
+    "Simple, practical support for what usually feels confusing before and after a move.": "Apoyo simple y práctico para lo que suele sentirse confuso antes y después de una mudanza.",
+    "Before You Settle": "Antes de instalarte",
+    "Guidance before the move: relocation consultation, area guidance, timelines, documents and first decisions.": "Orientación antes de la mudanza: consulta de reubicación, zonas, tiempos, documentos y primeras decisiones.",
+    "Settling in Panama": "Instalándote en Panamá",
+    "Support during the move: paperwork guidance, airport transfer, setup support and local onboarding.": "Apoyo durante la mudanza: orientación documental, traslado desde el aeropuerto, instalación y adaptación local.",
+    "Stay Settled": "Mantente instalado",
+    "Care, protection and maintenance after arrival: home watch, vendor coordination and ongoing local support.": "Cuidado, protección y mantenimiento después de la llegada: supervisión del hogar, coordinación de proveedores y apoyo local continuo.",
+    "See our services": "Ver nuestros servicios",
+    "Need more information?": "¿Necesitas más información?",
+    "Settle in Panama with local experts.": "Instálate en Panamá con expertos locales.",
+    "Schedule a consultation": "Agenda una consulta",
+    "Call": "Llama al",
+    "or write on": "o escríbenos por",
+    "Book a consultation": "Agenda una consulta",
+    "Local hands for a calmer move.": "Apoyo local para una mudanza más tranquila.",
+    "Settle Panama helps International Residents handle the practical, local and time-sensitive pieces of moving, settling and maintaining life in Panama.": "Settle Panama ayuda a residentes internacionales a manejar las partes prácticas, locales y sensibles al tiempo de mudarse, instalarse y mantener su vida en Panamá.",
+    "How we work": "Cómo trabajamos",
+    "We start with a clear consultation and document review.": "Empezamos con una consulta clara y revisión de documentos.",
+    "We map the steps, timelines and local dependencies.": "Mapeamos los pasos, tiempos y dependencias locales.",
+    "We coordinate practical follow-up with transparent communication.": "Coordinamos el seguimiento práctico con comunicación transparente.",
+    "USD": "USD",
+    "Dollarized economy": "Economía dolarizada",
+    "A familiar currency for daily life and planning.": "Una moneda familiar para la vida diaria y la planificación.",
+    "The U.S. dollar circulates legally in Panama, offering familiarity and practical monetary stability for many International Residents.": "El dólar estadounidense circula legalmente en Panamá, ofreciendo familiaridad y estabilidad monetaria práctica para muchos residentes internacionales.",
+    "Visa": "Visa",
+    "Residency options": "Opciones de residencia",
+    "Several pathways for long-term living.": "Varias rutas para vivir a largo plazo.",
+    "Panama offers different residency pathways for retirees, investors, professionals and families planning a long-term move.": "Panamá ofrece diferentes rutas de residencia para jubilados, inversionistas, profesionales y familias que planifican una mudanza a largo plazo.",
+    "Hub": "Hub",
+    "Global connectivity": "Conectividad global",
+    "A strong base for travel and business.": "Una base fuerte para viajar y hacer negocios.",
+    "With strong international flight connections, Panama makes it easier to travel frequently or stay connected to business and family abroad.": "Con fuertes conexiones aéreas internacionales, Panamá facilita viajar con frecuencia o mantenerse conectado con negocios y familia en el exterior.",
+    "Sun": "Sol",
+    "Warm weather year-round": "Clima cálido todo el año",
+    "Outdoor living, beaches and tropical days.": "Vida al aire libre, playas y días tropicales.",
+    "A tropical climate, access to beaches and outdoor living make Panama appealing for those seeking sunshine throughout the year.": "Un clima tropical, acceso a playas y vida al aire libre hacen de Panamá una opción atractiva para quienes buscan sol todo el año.",
+    "Cost": "Costo",
+    "Competitive cost of living": "Costo de vida competitivo",
+    "Lifestyle flexibility depending on the area.": "Flexibilidad de estilo de vida según la zona.",
+    "Depending on the area and lifestyle, Panama can offer a more competitive cost of living than many North American or European markets.": "Según la zona y el estilo de vida, Panamá puede ofrecer un costo de vida más competitivo que muchos mercados de Norteamérica o Europa.",
+    "Life": "Vida",
+    "Many ways to live": "Muchas formas de vivir",
+    "City, beach, mountains or islands.": "Ciudad, playa, montañas o islas.",
+    "Choose between city life, beach towns, mountain communities or island settings based on your pace, goals and preferences.": "Elige entre vida urbana, pueblos de playa, comunidades de montaña o entornos isleños según tu ritmo, objetivos y preferencias.",
+    "Discover why retirees, entrepreneurs, investors, and international residents choose Panama for its lifestyle, stability, connectivity, and endless opportunities.": "Descubre por qué jubilados, emprendedores, inversionistas y residentes internacionales eligen Panamá por su estilo de vida, estabilidad, conectividad y oportunidades.",
+    "Reasons to choose Panama": "Razones para elegir Panamá",
+    "Ask us about Panama": "Pregúntanos sobre Panamá",
+    "Guidance before the move, so you can plan your next chapter with clarity.": "Orientación antes de la mudanza para planificar tu próximo capítulo con claridad.",
+    "Personalized relocation consultation": "Consulta personalizada de reubicación",
+    "Residency and visa options": "Opciones de residencia y visa",
+    "Cost of living insights": "Información sobre costo de vida",
+    "Healthcare and insurance guidance": "Orientación sobre salud y seguros",
+    "Banking information": "Información bancaria",
+    "Neighborhood recommendations": "Recomendaciones de zonas",
+    "Airport arrival planning": "Planificación de llegada al aeropuerto",
+    "Relocation timelines": "Cronogramas de reubicación",
+    "Plan Before You Settle": "Planifica antes de instalarte",
+    "Support during your move, from paperwork guidance to local setup support.": "Apoyo durante tu mudanza, desde orientación documental hasta instalación local.",
+    "Document preparation guidance": "Orientación para preparación de documentos",
+    "Appointment coordination": "Coordinación de citas",
+    "Government process assistance": "Asistencia con trámites gubernamentales",
+    "Translation referrals": "Referencias de traducción",
+    "Driver’s license homologation guidance": "Orientación para homologar licencia de conducir",
+    "Internet and mobile service setup": "Instalación de internet y telefonía móvil",
+    "Move-in coordination": "Coordinación de llegada al hogar",
+    "Get Settling Support": "Recibe apoyo para instalarte",
+    "Care, protection and maintenance after arrival, so life here keeps running smoothly.": "Cuidado, protección y mantenimiento después de la llegada para que tu vida aquí siga funcionando bien.",
+    "Vendor coordination": "Coordinación de proveedores",
+    "Maintenance follow-up": "Seguimiento de mantenimiento",
+    "Household sourcing": "Búsqueda de artículos para el hogar",
+    "Concierge recommendations": "Recomendaciones concierge",
+    "Local liaison support": "Apoyo de enlace local",
+    "Ongoing resident support": "Apoyo continuo para residentes",
+    "Stay Settled With Us": "Mantente instalado con nosotros",
+    "For more information,": "Para más información,",
+    "contact us": "contáctanos",
+    "Name*": "Nombre*",
+    "Last name*": "Apellido*",
+    "Email*": "Correo*",
+    "Phone*": "Teléfono*",
+    "Send": "Enviar",
+    "Templates": "Plantillas",
+    "Archived layout ideas.": "Ideas de diseño archivadas.",
+    "This hidden page can store future layout patterns without exposing them in the main navigation.": "Esta página oculta puede guardar patrones de diseño futuros sin exponerlos en la navegación principal.",
+    "Contact options": "Opciones de contacto",
+    "Message us on WhatsApp": "Escríbenos por WhatsApp",
+    "Message us on Telegram": "Escríbenos por Telegram",
+    "Book a free consultation": "Agenda una consulta gratis",
+    "Call us": "Llámanos",
+    "Call +507 6912-7505": "Llamar +507 6912-7505",
+    "We answer until 12:00 AM Panama time": "Respondemos hasta las 12:00 AM hora de Panamá",
+    "Contact us": "Contáctanos"
+  },
+  fr: {
+    "English": "Anglais",
+    "Spanish": "Espagnol",
+    "French": "Français",
+    "Relocation, settlement and property support for International Residents in Panama.": "Accompagnement de relocalisation, d’installation et de gestion de propriété pour résidents internationaux au Panama.",
+    "Why us": "Pourquoi nous",
+    "About Panama": "À propos du Panama",
+    "Our Services": "Services",
+    "Contact": "Contact",
+    "Sign in": "Contact",
+    "Open navigation": "Ouvrir la navigation",
+    "Language": "Langue",
+    "Theme": "Thème",
+    "Relocation concierge": "Conciergerie de relocalisation",
+    "Move to Panama without feeling lost.": "Installez-vous au Panama sans vous sentir perdu.",
+    "Practical relocation, settlement and property support for International Residents who want trusted local hands in Panama.": "Un accompagnement pratique pour la relocalisation, l’installation et la propriété, destiné aux résidents internationaux qui veulent un soutien local fiable au Panama.",
+    "Start your relocation": "Commencer votre relocalisation",
+    "View all our services": "Voir tous nos services",
+    "Location": "Emplacement",
+    "Your new life in Panama starts here.": "Votre nouvelle vie au Panama commence ici.",
+    "We support practical relocation and settlement needs across key residential areas, beach communities and city neighborhoods.": "Nous accompagnons les besoins pratiques de relocalisation et d’installation dans les principales zones résidentielles, communautés balnéaires et quartiers urbains.",
+    "Learn more about Panama": "En savoir plus sur le Panama",
+    "Panama residential skyline": "Vue résidentielle du Panama",
+    "Residential property in Panama": "Propriété résidentielle au Panama",
+    "Support before, during and after": "Un accompagnement avant, pendant et après",
+    "your move.": "votre déménagement.",
+    "From early guidance and setup services to care, protection and maintenance once you are already in Panama.": "De l’orientation initiale aux services d’installation, puis au suivi, à la protection et à l’entretien une fois sur place au Panama.",
+    "Open all services": "Voir tous les services",
+    "Residency / E-Cédula": "Résidence / E-Cédula",
+    "Driver’s license homologation": "Homologation du permis de conduire",
+    "Bank accounts": "Comptes bancaires",
+    "Medical care / insurance": "Soins médicaux / assurance",
+    "Airport transfer to destination": "Transfert de l’aéroport à destination",
+    "Home services install/support": "Installation et assistance des services à domicile",
+    "Pet import assistance": "Assistance pour l’importation d’animaux",
+    "Home concierge / home watch": "Conciergerie du domicile / surveillance de maison",
+    "Relocation": "Relocalisation",
+    "A softer landing in Panama.": "Une arrivée plus simple au Panama.",
+    "Simple, practical support for what usually feels confusing before and after a move.": "Un soutien simple et pratique pour ce qui semble souvent compliqué avant et après un déménagement.",
+    "Before You Settle": "Avant de vous installer",
+    "Guidance before the move: relocation consultation, area guidance, timelines, documents and first decisions.": "Orientation avant le déménagement : consultation de relocalisation, choix des zones, calendrier, documents et premières décisions.",
+    "Settling in Panama": "S’installer au Panama",
+    "Support during the move: paperwork guidance, airport transfer, setup support and local onboarding.": "Soutien pendant le déménagement : documents, transfert depuis l’aéroport, installation et accompagnement local.",
+    "Stay Settled": "Restez bien installé",
+    "Care, protection and maintenance after arrival: home watch, vendor coordination and ongoing local support.": "Suivi, protection et entretien après l’arrivée : surveillance du domicile, coordination de prestataires et soutien local continu.",
+    "See our services": "Voir nos services",
+    "Need more information?": "Besoin de plus d’informations ?",
+    "Settle in Panama with local experts.": "Installez-vous au Panama avec des experts locaux.",
+    "Schedule a consultation": "Planifier une consultation",
+    "Call": "Appelez le",
+    "or write on": "ou écrivez-nous sur",
+    "Book a consultation": "Planifier une consultation",
+    "Local hands for a calmer move.": "Un soutien local pour un déménagement plus serein.",
+    "Settle Panama helps International Residents handle the practical, local and time-sensitive pieces of moving, settling and maintaining life in Panama.": "Settle Panama aide les résidents internationaux à gérer les aspects pratiques, locaux et urgents liés au déménagement, à l’installation et à la vie au Panama.",
+    "How we work": "Notre méthode",
+    "We start with a clear consultation and document review.": "Nous commençons par une consultation claire et une revue des documents.",
+    "We map the steps, timelines and local dependencies.": "Nous définissons les étapes, les délais et les dépendances locales.",
+    "We coordinate practical follow-up with transparent communication.": "Nous coordonnons le suivi pratique avec une communication transparente.",
+    "USD": "USD",
+    "Dollarized economy": "Économie dollarisée",
+    "A familiar currency for daily life and planning.": "Une monnaie familière pour la vie quotidienne et la planification.",
+    "The U.S. dollar circulates legally in Panama, offering familiarity and practical monetary stability for many International Residents.": "Le dollar américain circule légalement au Panama, offrant familiarité et stabilité monétaire pratique à de nombreux résidents internationaux.",
+    "Visa": "Visa",
+    "Residency options": "Options de résidence",
+    "Several pathways for long-term living.": "Plusieurs voies pour vivre à long terme.",
+    "Panama offers different residency pathways for retirees, investors, professionals and families planning a long-term move.": "Le Panama offre différentes voies de résidence pour les retraités, investisseurs, professionnels et familles qui préparent une installation à long terme.",
+    "Hub": "Hub",
+    "Global connectivity": "Connectivité mondiale",
+    "A strong base for travel and business.": "Une base solide pour voyager et faire des affaires.",
+    "With strong international flight connections, Panama makes it easier to travel frequently or stay connected to business and family abroad.": "Grâce à ses solides connexions aériennes internationales, le Panama facilite les voyages fréquents et le lien avec les affaires ou la famille à l’étranger.",
+    "Sun": "Soleil",
+    "Warm weather year-round": "Climat chaud toute l’année",
+    "Outdoor living, beaches and tropical days.": "Vie en plein air, plages et journées tropicales.",
+    "A tropical climate, access to beaches and outdoor living make Panama appealing for those seeking sunshine throughout the year.": "Un climat tropical, l’accès aux plages et la vie en plein air rendent le Panama attrayant pour ceux qui recherchent du soleil toute l’année.",
+    "Cost": "Coût",
+    "Competitive cost of living": "Coût de la vie compétitif",
+    "Lifestyle flexibility depending on the area.": "Une flexibilité de style de vie selon la région.",
+    "Depending on the area and lifestyle, Panama can offer a more competitive cost of living than many North American or European markets.": "Selon la zone et le style de vie, le Panama peut offrir un coût de la vie plus compétitif que de nombreux marchés nord-américains ou européens.",
+    "Life": "Vie",
+    "Many ways to live": "De nombreuses façons de vivre",
+    "City, beach, mountains or islands.": "Ville, plage, montagnes ou îles.",
+    "Choose between city life, beach towns, mountain communities or island settings based on your pace, goals and preferences.": "Choisissez entre la vie urbaine, les villes côtières, les communautés de montagne ou les îles selon votre rythme, vos objectifs et vos préférences.",
+    "Discover why retirees, entrepreneurs, investors, and international residents choose Panama for its lifestyle, stability, connectivity, and endless opportunities.": "Découvrez pourquoi les retraités, entrepreneurs, investisseurs et résidents internationaux choisissent le Panama pour son style de vie, sa stabilité, sa connectivité et ses nombreuses opportunités.",
+    "Reasons to choose Panama": "Raisons de choisir le Panama",
+    "Ask us about Panama": "Posez-nous vos questions sur le Panama",
+    "Guidance before the move, so you can plan your next chapter with clarity.": "Un accompagnement avant le déménagement pour planifier votre prochain chapitre avec clarté.",
+    "Personalized relocation consultation": "Consultation personnalisée de relocalisation",
+    "Residency and visa options": "Options de résidence et de visa",
+    "Cost of living insights": "Informations sur le coût de la vie",
+    "Healthcare and insurance guidance": "Orientation santé et assurance",
+    "Banking information": "Informations bancaires",
+    "Neighborhood recommendations": "Recommandations de quartiers",
+    "Airport arrival planning": "Planification de l’arrivée à l’aéroport",
+    "Relocation timelines": "Calendriers de relocalisation",
+    "Plan Before You Settle": "Planifier avant de vous installer",
+    "Support during your move, from paperwork guidance to local setup support.": "Soutien pendant votre déménagement, des documents à l’installation locale.",
+    "Document preparation guidance": "Aide à la préparation des documents",
+    "Appointment coordination": "Coordination des rendez-vous",
+    "Government process assistance": "Assistance pour les démarches administratives",
+    "Translation referrals": "Références pour la traduction",
+    "Driver’s license homologation guidance": "Orientation pour l’homologation du permis de conduire",
+    "Internet and mobile service setup": "Installation internet et mobile",
+    "Move-in coordination": "Coordination de l’installation",
+    "Get Settling Support": "Obtenir un soutien d’installation",
+    "Care, protection and maintenance after arrival, so life here keeps running smoothly.": "Suivi, protection et entretien après l’arrivée pour que la vie sur place reste simple.",
+    "Vendor coordination": "Coordination des prestataires",
+    "Maintenance follow-up": "Suivi de maintenance",
+    "Household sourcing": "Recherche d’articles pour le foyer",
+    "Concierge recommendations": "Recommandations de conciergerie",
+    "Local liaison support": "Soutien de liaison locale",
+    "Ongoing resident support": "Soutien continu aux résidents",
+    "Stay Settled With Us": "Restez bien installé avec nous",
+    "For more information,": "Pour plus d’informations,",
+    "contact us": "contactez-nous",
+    "Name*": "Prénom*",
+    "Last name*": "Nom*",
+    "Email*": "Email*",
+    "Phone*": "Téléphone*",
+    "Send": "Envoyer",
+    "Templates": "Modèles",
+    "Archived layout ideas.": "Idées de mise en page archivées.",
+    "This hidden page can store future layout patterns without exposing them in the main navigation.": "Cette page cachée peut conserver de futures idées de mise en page sans les afficher dans la navigation principale.",
+    "Contact options": "Options de contact",
+    "Message us on WhatsApp": "Écrivez-nous sur WhatsApp",
+    "Message us on Telegram": "Écrivez-nous sur Telegram",
+    "Book a free consultation": "Planifier une consultation gratuite",
+    "Call us": "Appelez-nous",
+    "Call +507 6912-7505": "Appeler le +507 6912-7505",
+    "We answer until 12:00 AM Panama time": "Nous répondons jusqu’à 12:00 AM, heure du Panama",
+    "Contact us": "Contactez-nous"
+  }
+
+};
+
+const LanguageContext = createContext({
+  language: 'en',
+  setLanguage: () => {},
+  tx: (value) => value
+});
+
+function useLanguage() {
+  return useContext(LanguageContext);
+}
 
 function LanguageIcon() {
   return (
@@ -241,7 +517,7 @@ function useHashRouter() {
 function Header({ page, showPage }) {
   const [open, setOpen] = useState(false);
   const [languageOpen, setLanguageOpen] = useState(false);
-  const [language, setLanguage] = useState('English');
+  const { language, setLanguage, tx } = useLanguage();
   const navItems = [
     ['about', 'Why us'],
     ['about-panama', 'About Panama'],
@@ -263,7 +539,7 @@ function Header({ page, showPage }) {
   return (
     <div className="sticky top-0 z-50 max-h-[108px] w-full bg-warm/90 backdrop-blur-xl">
       <div className="flex min-h-[26px] items-center justify-center border-b border-[rgba(174,160,140,.22)] px-4 py-1 text-center text-[11px] text-ink/60 before:mx-2 before:h-1.5 before:w-1.5 before:rounded-full before:bg-gold/70 before:content-[''] after:mx-2 after:h-1.5 after:w-1.5 after:rounded-full after:bg-gold/70 after:content-['']">
-        Relocation, settlement and property support for International Residents in Panama.
+        {tx('Relocation, settlement and property support for International Residents in Panama.')}
       </div>
 
       <header className="w-full px-6 pb-1.5 pt-2">
@@ -276,7 +552,7 @@ function Header({ page, showPage }) {
             className="grid h-10 w-10 place-items-center justify-self-end rounded-full border border-[rgba(174,160,140,.34)] bg-white/50 text-navy lg:hidden"
             type="button"
             onClick={() => setOpen((value) => !value)}
-            aria-label="Open navigation"
+            aria-label={tx('Open navigation')}
           >
             <Menu size={20} />
           </button>
@@ -289,7 +565,7 @@ function Header({ page, showPage }) {
                 type="button"
                 onClick={() => go(target)}
               >
-                {label}
+                {tx(label)}
               </button>
             ))}
           </nav>
@@ -299,7 +575,7 @@ function Header({ page, showPage }) {
               <button
                 className="grid h-8 w-8 place-items-center rounded-full text-navy transition hover:bg-taupe/15 hover:text-gold"
                 type="button"
-                aria-label="Language"
+                aria-label={tx('Language')}
                 aria-expanded={languageOpen}
                 onClick={() => setLanguageOpen((value) => !value)}
               >
@@ -308,25 +584,29 @@ function Header({ page, showPage }) {
 
               {languageOpen && (
                 <ul className="absolute right-0 top-10 z-[70] min-w-[138px] overflow-hidden rounded-xl border border-[rgba(174,160,140,.22)] bg-white py-1 text-sm shadow-[0_18px_42px_rgba(13,31,45,.13)]">
-                  {['English', 'Spanish'].map((item) => (
-                    <li key={item}>
+                  {[
+                    ['en', 'English'],
+                    ['es', 'Spanish'],
+                    ['fr', 'French']
+                  ].map(([code, label]) => (
+                    <li key={code}>
                       <button
                         type="button"
-                        className={`block w-full px-3 py-2 text-left transition hover:bg-gray-50 ${language === item ? 'bg-gray-100 text-gray-900' : 'text-gray-700'}`}
-                        onClick={() => selectLanguage(item)}
+                        className={`block w-full px-3 py-2 text-left transition hover:bg-gray-50 ${language === code ? 'bg-gray-100 text-gray-900' : 'text-gray-700'}`}
+                        onClick={() => selectLanguage(code)}
                       >
-                        {item}
+                        {tx(label)}
                       </button>
                     </li>
                   ))}
                 </ul>
               )}
             </div>
-            <button className="grid h-8 w-8 place-items-center rounded-full text-navy transition hover:bg-taupe/15 hover:text-gold" type="button" aria-label="Theme">
+            <button className="grid h-8 w-8 place-items-center rounded-full text-navy transition hover:bg-taupe/15 hover:text-gold" type="button" aria-label={tx('Theme')}>
               <Moon size={17} />
             </button>
             <button className="text-[13px] font-black text-navy" type="button" onClick={() => go('contact')}>
-              Sign in <span className="inline-block transition group-hover:translate-x-1">→</span>
+              {tx('Sign in')} <span className="inline-block transition group-hover:translate-x-1">→</span>
             </button>
           </div>
         </div>
@@ -343,6 +623,8 @@ function Header({ page, showPage }) {
 }
 
 function Hero({ showPage, scrollLandingSection }) {
+  const { tx } = useLanguage();
+
   return (
     <section
       className="relative isolate min-h-[calc(100vh-92px)] overflow-hidden bg-cover bg-center bg-fixed before:absolute before:inset-0 before:z-0 before:bg-[radial-gradient(circle_at_14%_20%,rgba(122,145,129,.24),transparent_30%),radial-gradient(circle_at_82%_8%,rgba(190,154,94,.18),transparent_24%)] before:content-[''] after:absolute after:inset-0 after:z-0 after:bg-[rgba(13,31,45,.18)] after:backdrop-brightness-75 after:backdrop-contrast-95 after:backdrop-saturate-75 after:content-[''] md:bg-fixed"
@@ -352,17 +634,17 @@ function Hero({ showPage, scrollLandingSection }) {
     >
       <div className="site-view relative z-10 flex min-h-[calc(100vh-92px)] items-center px-6 py-24">
         <div className="max-w-[720px]">
-          <span className="eyebrow text-sand/85">Relocation concierge</span>
-          <h1 className="heading-xl text-white drop-shadow-xl">Move to Panama without feeling lost.</h1>
+          <span className="eyebrow text-sand/85">{tx('Relocation concierge')}</span>
+          <h1 className="heading-xl text-white drop-shadow-xl">{tx('Move to Panama without feeling lost.')}</h1>
           <p className="mb-8 max-w-[510px] text-lg leading-relaxed text-white/80 drop-shadow">
-            Practical relocation, settlement and property support for International Residents who want trusted local hands in Panama.
+            {tx('Practical relocation, settlement and property support for International Residents who want trusted local hands in Panama.')}
           </p>
           <div className="flex flex-wrap gap-3">
             <button className="btn bg-sand text-navy hover:bg-white" type="button" onClick={() => scrollLandingSection('location')}>
-              Start your relocation <ArrowRight size={16} />
+              {tx('Start your relocation')} <ArrowRight size={16} />
             </button>
             <button className="btn border border-sand/50 bg-white/10 text-white backdrop-blur hover:bg-sand/15" type="button" onClick={() => scrollLandingSection('our-services')}>
-              View all our services
+              {tx('View all our services')}
             </button>
           </div>
         </div>
@@ -372,17 +654,19 @@ function Hero({ showPage, scrollLandingSection }) {
 }
 
 function LocationSection({ showPage }) {
+  const { tx } = useLanguage();
+
   return (
     <section className="section" id="location">
       <div className="site-view grid items-center gap-16 lg:grid-cols-[.9fr_1.1fr]">
         <div>
-          <span className="eyebrow">Location</span>
-          <h2 className="heading-lg text-left text-ink">Your new life in Panama starts here.</h2>
+          <span className="eyebrow">{tx('Location')}</span>
+          <h2 className="heading-lg text-left text-ink">{tx('Your new life in Panama starts here.')}</h2>
           <p className="max-w-[450px] text-base leading-relaxed text-ink/65">
-            We support practical relocation and settlement needs across key residential areas, beach communities and city neighborhoods.
+            {tx('We support practical relocation and settlement needs across key residential areas, beach communities and city neighborhoods.')}
           </p>
           <button className="mt-3 inline-flex items-center gap-2 rounded-full border border-[rgba(174,160,140,.34)] bg-white/60 px-4 py-3.5 text-sm font-black text-navy shadow-sm transition hover:bg-white/80" type="button" onClick={() => showPage('about-panama')}>
-            Learn more about Panama <ArrowRight size={16} />
+            {tx('Learn more about Panama')} <ArrowRight size={16} />
           </button>
         </div>
 
@@ -401,34 +685,36 @@ function LocationSection({ showPage }) {
 }
 
 function LivingSection({ showPage }) {
+  const { tx } = useLanguage();
+
   return (
     <section className="w-full overflow-hidden" id="our-services">
       <div className="grid w-full lg:grid-cols-2">
         <div
           className="min-h-[380px] bg-cover bg-center lg:min-h-[clamp(480px,70vh,760px)]"
           style={{ backgroundImage: `linear-gradient(90deg, rgba(13,31,45,.08), rgba(13,31,45,0)), url(${assets.living})` }}
-          aria-label="Residential property in Panama"
+          aria-label={tx('Residential property in Panama')}
         />
         <div className="flex min-h-[clamp(480px,70vh,760px)] items-center justify-center bg-[rgba(239,233,224,.72)] px-6 py-14 lg:px-[clamp(48px,6vw,88px)]">
           <div className="w-full max-w-[520px]">
-            <span className="eyebrow">Our Services</span>
+            <span className="eyebrow">{tx('Our Services')}</span>
             <h2 className="mb-4 text-[clamp(30px,3.1vw,46px)] uppercase leading-tight tracking-wide text-navy">
-              Support before, during and after <span className="text-gold">your move.</span>
+              {tx('Support before, during and after')} <span className="text-gold">{tx('your move.')}</span>
             </h2>
             <p className="mb-6 max-w-[460px] text-left leading-relaxed text-ink/65">
-              From early guidance and setup services to care, protection and maintenance once you are already in Panama.
+              {tx('From early guidance and setup services to care, protection and maintenance once you are already in Panama.')}
             </p>
             <ul className="grid list-none gap-x-6 gap-y-3.5 p-0 sm:grid-cols-2">
               {services.map((service) => (
                 <li key={service} className="relative pl-5 text-sm font-extrabold leading-snug text-navy before:absolute before:left-0 before:top-2 before:h-2 before:w-2 before:rounded-full before:bg-gold before:shadow-[0_0_0_4px_rgba(190,154,94,.12)]">
-                  {service}
+                  {tx(service)}
                 </li>
               ))}
             </ul>
 
             <div className="mt-8 flex justify-end">
               <button className="btn bg-[rgb(190,154,94)] text-white hover:bg-[rgb(172,139,84)] hover:shadow-[0_16px_32px_rgba(190,154,94,.18)]" type="button" onClick={() => showPage('all-our-services')}>
-                Open all services <ArrowRight size={16} />
+                {tx('Open all services')} <ArrowRight size={16} />
               </button>
             </div>
           </div>
@@ -439,6 +725,7 @@ function LivingSection({ showPage }) {
 }
 
 function RelocationSection({ showPage, scrollLandingSection }) {
+  const { tx } = useLanguage();
   const [hasRelocateBackground, setHasRelocateBackground] = useState(false);
 
   useEffect(() => {
@@ -458,22 +745,22 @@ function RelocationSection({ showPage, scrollLandingSection }) {
     >
       <div className="site-view">
         <div className="mx-auto mb-11 max-w-[760px] text-center">
-          <span className="eyebrow">Relocation</span>
-          <h2 className="heading-lg text-center text-ink">A softer landing in Panama.</h2>
-          <p className="text-ink/65">Simple, practical support for what usually feels confusing before and after a move.</p>
+          <span className="eyebrow">{tx('Relocation')}</span>
+          <h2 className="heading-lg text-center text-ink">{tx('A softer landing in Panama.')}</h2>
+          <p className="text-ink/65">{tx('Simple, practical support for what usually feels confusing before and after a move.')}</p>
         </div>
         <div className="grid gap-5 lg:grid-cols-3">
           {features.map((feature) => (
-            <article key={feature.title} className="feature-card">
-              <h3 className="mb-2 text-2xl font-black leading-tight tracking-[-.045em] text-navy">{feature.title}</h3>
-              <p className="text-base leading-relaxed text-ink/65">{feature.text}</p>
+            <article key={tx(feature.title)} className="feature-card">
+              <h3 className="mb-2 text-2xl font-black leading-tight tracking-[-.045em] text-navy">{tx(feature.title)}</h3>
+              <p className="text-base leading-relaxed text-ink/65">{tx(feature.text)}</p>
             </article>
           ))}
         </div>
 
         <div className="mt-10 flex justify-center">
           <button className="btn bg-navy text-white hover:bg-[rgb(18,42,58)] hover:shadow-[0_16px_32px_rgba(13,31,45,.11)]" type="button" onClick={() => scrollLandingSection('our-services')}>
-            See our services <ArrowRight size={16} />
+            {tx('See our services')} <ArrowRight size={16} />
           </button>
         </div>
       </div>
@@ -482,18 +769,20 @@ function RelocationSection({ showPage, scrollLandingSection }) {
 }
 
 function PreFooter({ showPage }) {
+  const { tx } = useLanguage();
+
   return (
     <section className="bg-sage px-6 py-20 text-white" id="consultation">
       <div className="site-view text-left">
-        <span className="eyebrow text-sand/75">Need more information?</span>
+        <span className="eyebrow text-sand/75">{tx('Need more information?')}</span>
         <h2 className="mb-8 max-w-[720px] text-left text-[clamp(36px,4vw,58px)] font-black leading-tight tracking-[-.055em] text-white">
-          Settle in Panama with local experts.
+          {tx('Settle in Panama with local experts.')}
         </h2>
         <button className="mb-6 inline-flex items-center gap-2 rounded-[10px] border border-white/40 bg-sand px-5 py-3.5 text-sm font-black text-navy transition hover:bg-white hover:shadow-[0_18px_34px_rgba(0,0,0,.18)]" type="button" onClick={() => showPage('contact')}>
-          Schedule a consultation <ArrowRight size={16} />
+          {tx('Schedule a consultation')} <ArrowRight size={16} />
         </button>
         <p className="m-0 max-w-[820px] text-[15px] text-white/75">
-          Call <strong className="font-black text-white">+507 6912-7505</strong> or write on <strong className="font-black text-white">WhatsApp</strong>, <strong className="font-black text-white">Telegram</strong> or <strong className="font-black text-white">hello@settlepanama.com</strong>
+          {tx('Call')} <strong className="font-black text-white">+507 6912-7505</strong> {tx('or write on')} <strong className="font-black text-white">WhatsApp</strong>, <strong className="font-black text-white">Telegram</strong> or <strong className="font-black text-white">hello@settlepanama.com</strong>
         </p>
       </div>
     </section>
@@ -513,25 +802,27 @@ function LandingPage({ showPage, scrollLandingSection }) {
 }
 
 function AboutPage({ showPage }) {
+  const { tx } = useLanguage();
+
   return (
     <section className="section min-h-[calc(100vh-92px)]">
       <div className="site-view grid items-center gap-11 lg:grid-cols-[.95fr_1.05fr]">
         <div>
-          <span className="eyebrow">Why us</span>
-          <h1 className="heading-xl text-ink">Local hands for a calmer move.</h1>
+          <span className="eyebrow">{tx('Why us')}</span>
+          <h1 className="heading-xl text-ink">{tx('Local hands for a calmer move.')}</h1>
           <p className="max-w-[560px] text-lg leading-relaxed text-ink/65">
-            Settle Panama helps International Residents handle the practical, local and time-sensitive pieces of moving, settling and maintaining life in Panama.
+            {tx('Settle Panama helps International Residents handle the practical, local and time-sensitive pieces of moving, settling and maintaining life in Panama.')}
           </p>
-          <button className="btn btn-primary mt-4" type="button" onClick={() => showPage('contact')}>Book a consultation</button>
+          <button className="btn btn-primary mt-4" type="button" onClick={() => showPage('contact')}>{tx('Book a consultation')}</button>
         </div>
         <div className="rounded-[30px] border border-[rgba(174,160,140,.22)] bg-white/60 p-8 shadow-soft">
-          <h3 className="mb-4 text-2xl font-black text-navy">How we work</h3>
+          <h3 className="mb-4 text-2xl font-black text-navy">{tx('How we work')}</h3>
           {[
             'We start with a clear consultation and document review.',
             'We map the steps, timelines and local dependencies.',
             'We coordinate practical follow-up with transparent communication.'
           ].map((item) => (
-            <div key={item} className="border-t border-[rgba(174,160,140,.22)] py-4 text-ink/65">{item}</div>
+            <div key={item} className="border-t border-[rgba(174,160,140,.22)] py-4 text-ink/65">{tx(item)}</div>
           ))}
         </div>
       </div>
@@ -540,6 +831,7 @@ function AboutPage({ showPage }) {
 }
 
 function AboutPanamaPage({ showPage }) {
+  const { tx } = useLanguage();
   const panamaHighlights = [
     {
       eyebrow: 'USD',
@@ -706,21 +998,21 @@ function AboutPanamaPage({ showPage }) {
 
       <div className="about-panama-shell">
         <div className="about-panama-hero">
-          <span className="eyebrow text-sand/80">About Panama</span>
-          <h1 className="heading-xl text-white">Your new life in Panama starts here.</h1>
+          <span className="eyebrow text-sand/80">{tx('About Panama')}</span>
+          <h1 className="heading-xl text-white">{tx('Your new life in Panama starts here.')}</h1>
           <p className="about-panama-lead">
-            Discover why retirees, entrepreneurs, investors, and international residents choose Panama for its lifestyle, stability, connectivity, and endless opportunities.
+            {tx('Discover why retirees, entrepreneurs, investors, and international residents choose Panama for its lifestyle, stability, connectivity, and endless opportunities.')}
           </p>
         </div>
 
         <div className="about-panama-explorer">
           <div className="about-panama-spotlight">
-            <span className="about-panama-mini-label">{activeHighlight.eyebrow}</span>
-            <h2>{activeHighlight.title}</h2>
-            <p>{activeHighlight.text}</p>
+            <span className="about-panama-mini-label">{tx(activeHighlight.eyebrow)}</span>
+            <h2>{tx(activeHighlight.title)}</h2>
+            <p>{tx(activeHighlight.text)}</p>
           </div>
 
-          <div className="about-panama-options" aria-label="Reasons to choose Panama">
+          <div className="about-panama-options" aria-label={tx('Reasons to choose Panama')}>
             {panamaHighlights.map((item, index) => (
               <button
                 key={item.title}
@@ -728,9 +1020,9 @@ function AboutPanamaPage({ showPage }) {
                 type="button"
                 onClick={() => handleHighlightSelect(index)}
               >
-                <span className="about-panama-option-kicker">{item.eyebrow}</span>
-                <span className="about-panama-option-title">{item.title}</span>
-                <span className="about-panama-option-short">{item.short}</span>
+                <span className="about-panama-option-kicker">{tx(item.eyebrow)}</span>
+                <span className="about-panama-option-title">{tx(item.title)}</span>
+                <span className="about-panama-option-short">{tx(item.short)}</span>
               </button>
             ))}
           </div>
@@ -742,7 +1034,7 @@ function AboutPanamaPage({ showPage }) {
             type="button"
             onClick={() => showPage('contact')}
           >
-            Ask us about Panama <ArrowRight size={16} />
+            {tx('Ask us about Panama')} <ArrowRight size={16} />
           </button>
         </div>
       </div>
@@ -751,6 +1043,7 @@ function AboutPanamaPage({ showPage }) {
 }
 
 function LandingInPanamaPage({ showPage }) {
+  const { tx } = useLanguage();
   useRevealOnScroll();
 
   return (
@@ -774,12 +1067,12 @@ function LandingInPanamaPage({ showPage }) {
 
               <div className="landing-panama-inner">
                 <div className={`landing-panama-content ${contentRight ? 'ml-auto' : ''}`}>
-                  <span className="eyebrow text-sand/80">{section.eyebrow}</span>
+                  <span className="eyebrow text-sand/80">{tx(section.eyebrow)}</span>
                   <h2 className="mb-5 text-[clamp(32px,4vw,60px)] font-normal uppercase leading-[1.02] tracking-[.02em] text-white">
-                    {section.eyebrow}
+                    {tx(section.eyebrow)}
                   </h2>
                   <p className="mb-8 max-w-[680px] text-base leading-relaxed text-white/82">
-                    {section.title}
+                    {tx(section.title)}
                   </p>
 
                   <div className="landing-panama-badge">
@@ -787,7 +1080,7 @@ function LandingInPanamaPage({ showPage }) {
                       {section.bullets.map((bullet) => (
                         <div key={bullet} className="landing-panama-bullet">
                           <span className="landing-panama-dot" />
-                          <span>{bullet}</span>
+                          <span>{tx(bullet)}</span>
                         </div>
                       ))}
                     </div>
@@ -800,7 +1093,7 @@ function LandingInPanamaPage({ showPage }) {
                     type="button"
                     onClick={() => showPage('contact')}
                   >
-                    {section.cta} <ArrowRight size={16} />
+                    {tx(section.cta)} <ArrowRight size={16} />
                   </button>
                 </div>
               </div>
@@ -813,6 +1106,8 @@ function LandingInPanamaPage({ showPage }) {
 }
 
 function ContactPage() {
+  const { tx } = useLanguage();
+
   return (
     <section className="min-h-[calc(100vh-92px)] bg-[#d8d8d8]">
       <div className="grid min-h-[calc(100vh-92px)] lg:grid-cols-2">
@@ -821,41 +1116,41 @@ function ContactPage() {
           style={{
             backgroundImage: `linear-gradient(90deg, rgba(247,245,241,.62), rgba(247,245,241,.10)), url(${assets.contact})`
           }}
-          aria-label="Panama residential skyline"
+          aria-label={tx('Panama residential skyline')}
         />
 
         <div className="flex items-center justify-center px-8 py-16 lg:px-16">
           <form className="w-full max-w-[560px]" onSubmit={(event) => event.preventDefault()}>
-            <span className="mb-3 block text-xs font-black uppercase tracking-[.14em] text-navy/65">Contact</span>
+            <span className="mb-3 block text-xs font-black uppercase tracking-[.14em] text-navy/65">{tx('Contact')}</span>
             <h1 className="mb-8 text-[clamp(32px,3.4vw,54px)] font-normal uppercase leading-[1.02] tracking-[.02em] text-navy">
-              For more information,<br />
-              <span className="text-gold">contact us</span>
+              {tx('For more information,')}<br />
+              <span className="text-gold">{tx('contact us')}</span>
             </h1>
 
             <div className="grid gap-7">
               <label className="block text-xs font-medium text-navy/75">
-                Name*
+                {tx('Name*')}
                 <input className="mt-2 block w-full border-0 border-b border-navy/55 bg-transparent px-0 py-2 text-sm text-navy outline-none transition placeholder:text-navy/35 focus:border-gold focus:ring-0" name="name" required />
               </label>
 
               <label className="block text-xs font-medium text-navy/75">
-                Last name*
+                {tx('Last name*')}
                 <input className="mt-2 block w-full border-0 border-b border-navy/55 bg-transparent px-0 py-2 text-sm text-navy outline-none transition placeholder:text-navy/35 focus:border-gold focus:ring-0" name="lastName" required />
               </label>
 
               <label className="block text-xs font-medium text-navy/75">
-                Email*
+                {tx('Email*')}
                 <input className="mt-2 block w-full border-0 border-b border-navy/55 bg-transparent px-0 py-2 text-sm text-navy outline-none transition placeholder:text-navy/35 focus:border-gold focus:ring-0" type="email" name="email" required />
               </label>
 
               <label className="block text-xs font-medium text-navy/75">
-                Phone*
+                {tx('Phone*')}
                 <input className="mt-2 block w-full border-0 border-b border-navy/55 bg-transparent px-0 py-2 text-sm text-navy outline-none transition placeholder:text-navy/35 focus:border-gold focus:ring-0" type="tel" name="phone" required />
               </label>
             </div>
 
             <button className="mt-12 inline-flex min-w-[104px] items-center justify-center border border-gold px-8 py-3 text-xs font-black uppercase tracking-[.08em] text-gold transition hover:bg-gold hover:text-white" type="submit">
-              Send
+              {tx('Send')}
             </button>
           </form>
         </div>
@@ -865,13 +1160,15 @@ function ContactPage() {
 }
 
 function TemplatesPage() {
+  const { tx } = useLanguage();
+
   return (
     <section className="section min-h-[calc(100vh-92px)]">
       <div className="site-view">
         <div className="mx-auto mb-8 max-w-[760px] text-center">
-          <span className="eyebrow">Templates</span>
-          <h1 className="heading-xl text-ink">Archived layout ideas.</h1>
-          <p className="text-ink/65">This hidden page can store future layout patterns without exposing them in the main navigation.</p>
+          <span className="eyebrow">{tx('Templates')}</span>
+          <h1 className="heading-xl text-ink">{tx('Archived layout ideas.')}</h1>
+          <p className="text-ink/65">{tx('This hidden page can store future layout patterns without exposing them in the main navigation.')}</p>
         </div>
         <div className="mx-auto min-h-[560px] max-w-[760px] rounded-[34px] border border-[rgba(174,160,140,.22)] bg-cover bg-center shadow-soft" style={{ backgroundImage: `url(${assets.hero})` }} />
       </div>
@@ -880,12 +1177,14 @@ function TemplatesPage() {
 }
 
 function Footer({ showPage }) {
+  const { tx } = useLanguage();
+
   return (
     <footer className="w-full border-t border-white/10 bg-navy px-6 py-10 text-white/75">
       <div className="site-view grid items-center gap-5 text-sm md:grid-cols-[1fr_auto]">
         <div>
           <img className="mb-3 block w-[156px] brightness-0 invert" src={assets.logo} alt="Settle Panama" />
-          <p className="m-0 text-white/70">Relocation, settlement and property support for International Residents in Panama.</p>
+          <p className="m-0 text-white/70">{tx('Relocation, settlement and property support for International Residents in Panama.')}</p>
         </div>
         <div className="flex flex-wrap gap-4 font-extrabold text-sand">
           {[
@@ -895,7 +1194,7 @@ function Footer({ showPage }) {
             ['contact', 'Contact']
           ].map(([item, label]) => (
             <button key={item} className="transition hover:text-gold" type="button" onClick={() => showPage(item)}>
-              {label}
+              {tx(label)}
             </button>
           ))}
         </div>
@@ -905,6 +1204,7 @@ function Footer({ showPage }) {
 }
 
 function ContactWidget({ showPage }) {
+  const { tx } = useLanguage();
   const [open, setOpen] = useState(false);
 
   const goContact = () => {
@@ -917,36 +1217,36 @@ function ContactWidget({ showPage }) {
   return (
     <div className="fixed bottom-6 right-6 z-[60] grid justify-items-end gap-3 max-[720px]:bottom-[18px] max-[720px]:right-[18px]">
       {open && (
-        <div className="flex animate-[contactMenuIn_.26s_ease_both] flex-col items-stretch justify-end gap-2 font-extrabold" aria-label="Contact options">
-          <a className={`${optionBaseClass} bg-green-600 hover:bg-green-700`} href="https://wa.me/50769127505" title="Message us on WhatsApp">
+        <div className="flex animate-[contactMenuIn_.26s_ease_both] flex-col items-stretch justify-end gap-2 font-extrabold" aria-label={tx('Contact options')}>
+          <a className={`${optionBaseClass} bg-green-600 hover:bg-green-700`} href="https://wa.me/50769127505" title={tx('Message us on WhatsApp')}>
             <span className="h-4 w-4 flex-none"><WhatsAppIcon /></span>
-            <span>Message us on WhatsApp</span>
+            <span>{tx('Message us on WhatsApp')}</span>
           </a>
 
-          <a className={`${optionBaseClass} bg-blue-500 hover:bg-blue-600`} href="https://t.me/+50769127505" title="Message us on Telegram">
+          <a className={`${optionBaseClass} bg-blue-500 hover:bg-blue-600`} href="https://t.me/+50769127505" title={tx('Message us on Telegram')}>
             <span className="h-4 w-4 flex-none"><TelegramIcon /></span>
-            <span>Message us on Telegram</span>
+            <span>{tx('Message us on Telegram')}</span>
           </a>
 
-          <button className={`${optionBaseClass} bg-navy hover:bg-[rgb(18,42,58)]`} type="button" onClick={goContact} title="Book a free consultation">
+          <button className={`${optionBaseClass} bg-navy hover:bg-[rgb(18,42,58)]`} type="button" onClick={goContact} title={tx('Book a free consultation')}>
             <span className="h-4 w-4 flex-none"><CalendarIcon /></span>
-            <span>Book a free consultation</span>
+            <span>{tx('Book a free consultation')}</span>
           </button>
 
-          <a className={`${optionBaseClass} bg-navy hover:bg-[rgb(18,42,58)]`} href="tel:+50769127505" title="Call us">
+          <a className={`${optionBaseClass} bg-navy hover:bg-[rgb(18,42,58)]`} href="tel:+50769127505" title={tx('Call us')}>
             <span className="h-4 w-4 flex-none"><PhoneIcon /></span>
-            <span>Call +507 6912-7505</span>
+            <span>{tx('Call +507 6912-7505')}</span>
           </a>
 
-          <div className="rounded-[10px] border border-white/35 bg-navy/80 px-3 py-2 text-center text-xs text-white shadow-lg backdrop-blur">We answer until 12:00 AM Panama time</div>
+          <div className="rounded-[10px] border border-white/35 bg-navy/80 px-3 py-2 text-center text-xs text-white shadow-lg backdrop-blur">{tx('We answer until 12:00 AM Panama time')}</div>
         </div>
       )}
 
       <button
         className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-white/40 bg-navy text-white shadow-[0_24px_50px_rgba(13,31,45,.30)] transition hover:scale-105 hover:bg-[rgb(18,42,58)]"
         type="button"
-        title="Contact us"
-        aria-label="Contact us"
+        title={tx('Contact us')}
+        aria-label={tx('Contact us')}
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}
       >
@@ -980,17 +1280,29 @@ function renderPage(page, showPage, scrollLandingSection) {
 
 export default function App() {
   const { page, showPage, scrollLandingSection } = useHashRouter();
+  const [language, setLanguage] = useState(() => (
+    typeof window !== 'undefined'
+      ? window.localStorage.getItem('settle-panama-language') || 'en'
+      : 'en'
+  ));
+
+  const tx = (value) => translations[language]?.[value] || value;
+
+  useEffect(() => {
+    window.localStorage.setItem('settle-panama-language', language);
+    document.documentElement.lang = language;
+  }, [language]);
 
   return (
-    <>
+    <LanguageContext.Provider value={{ language, setLanguage, tx }}>
       <Header page={page} showPage={showPage} />
       <main className="w-full overflow-hidden">
-        <div key={page} className="page-transition">
+        <div key={`${page}-${language}`} className="page-transition">
           {renderPage(page, showPage, scrollLandingSection)}
         </div>
       </main>
       <Footer showPage={showPage} />
       <ContactWidget showPage={showPage} />
-    </>
+    </LanguageContext.Provider>
   );
 }
