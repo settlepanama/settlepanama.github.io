@@ -742,7 +742,7 @@ function AboutPanamaPage({ showPage }) {
 
         <div className="about-panama-cta">
           <button
-            className="btn border border-white/25 bg-white/12 text-white hover:bg-white/18 hover:shadow-[0_16px_32px_rgba(13,31,45,.16)]"
+            className="btn border border-white/55 bg-white/18 text-white shadow-[0_18px_38px_rgba(13,31,45,.26),inset_0_1px_0_rgba(255,255,255,.28)] backdrop-blur-md hover:border-white/70 hover:bg-white/24 hover:shadow-[0_22px_44px_rgba(13,31,45,.32),inset_0_1px_0_rgba(255,255,255,.34)]"
             type="button"
             onClick={() => showPage('contact')}
           >
