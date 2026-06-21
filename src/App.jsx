@@ -1,9 +1,9 @@
-import { Menu, Moon, ArrowRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { Menu, Moon, ArrowRight } from 'lucide-react';
 import { assets } from './lib/assets.js';
 
 const pages = ['landing', 'about', 'pricing', 'contact', 'templates'];
-const landingSections = ['location', 'living', 'relocate', 'consultation'];
+const landingSections = ['location', 'relocate', 'living', 'consultation'];
 
 const services = [
   'Residency / E-Cédula',
@@ -201,7 +201,7 @@ function Header({ page, showPage }) {
       <header className="w-full px-6 pb-1.5 pt-2">
         <div className={`mx-auto grid min-h-[42px] max-w-site items-center gap-4 lg:grid-cols-[1fr_auto_1fr] ${open ? 'grid-cols-1' : 'grid-cols-[1fr_auto]'}`}>
           <button className="w-fit" type="button" onClick={() => go('landing')} aria-label="Settle Panama landing page">
-            <img className="block w-32 drop-shadow-sm transition hover:-translate-y-0.5 md:w-32" src={assets.logo} alt="Settle Panama" />
+            <img className="block w-32 drop-shadow-sm transition hover:opacity-80 md:w-32" src={assets.logo} alt="Settle Panama" />
           </button>
 
           <button
@@ -217,7 +217,7 @@ function Header({ page, showPage }) {
             {navItems.map(([target, label]) => (
               <button
                 key={target}
-                className={`nav-button relative rounded-full px-3 py-2 pb-3 text-[13px] font-extrabold text-ink/60 transition hover:-translate-y-px hover:text-navy ${page === target ? 'active text-navy' : ''}`}
+                className={`nav-button relative rounded-full px-3 py-2 pb-3 text-[13px] font-extrabold text-ink/60 transition hover:text-navy ${page === target ? 'active text-navy' : ''}`}
                 type="button"
                 onClick={() => go(target)}
               >
@@ -229,7 +229,7 @@ function Header({ page, showPage }) {
           <div className={`${open ? 'flex' : 'hidden'} items-center justify-start gap-3 lg:flex lg:justify-end`}>
             <div className="relative">
               <button
-                className="grid h-8 w-8 place-items-center rounded-full text-navy transition hover:-translate-y-px hover:bg-taupe/15 hover:text-gold"
+                className="grid h-8 w-8 place-items-center rounded-full text-navy transition hover:bg-taupe/15 hover:text-gold"
                 type="button"
                 aria-label="Language"
                 aria-expanded={languageOpen}
@@ -254,7 +254,7 @@ function Header({ page, showPage }) {
                 </ul>
               )}
             </div>
-            <button className="grid h-8 w-8 place-items-center rounded-full text-navy transition hover:-translate-y-px hover:bg-taupe/15 hover:text-gold" type="button" aria-label="Theme">
+            <button className="grid h-8 w-8 place-items-center rounded-full text-navy transition hover:bg-taupe/15 hover:text-gold" type="button" aria-label="Theme">
               <Moon size={17} />
             </button>
             <button className="text-[13px] font-black text-navy" type="button" onClick={() => go('contact')}>
@@ -369,8 +369,23 @@ function LivingSection() {
 }
 
 function RelocationSection() {
+  const [hasRelocateBackground, setHasRelocateBackground] = useState(false);
+
+  useEffect(() => {
+    const image = new Image();
+    image.onload = () => setHasRelocateBackground(true);
+    image.onerror = () => setHasRelocateBackground(false);
+    image.src = assets.relocateBg;
+  }, []);
+
   return (
-    <section className="section" id="relocate">
+    <section
+      className={`section ${hasRelocateBackground ? 'bg-cover bg-center bg-no-repeat' : ''}`}
+      id="relocate"
+      style={hasRelocateBackground ? {
+        backgroundImage: `linear-gradient(180deg, rgba(247,245,241,.86), rgba(247,245,241,.92)), url(${assets.relocateBg})`
+      } : undefined}
+    >
       <div className="site-view">
         <div className="mx-auto mb-11 max-w-[760px] text-center">
           <span className="eyebrow">Relocation</span>
@@ -414,8 +429,8 @@ function LandingPage({ showPage, scrollLandingSection }) {
     <>
       <Hero showPage={showPage} scrollLandingSection={scrollLandingSection} />
       <LocationSection showPage={showPage} />
-      <LivingSection />
       <RelocationSection />
+      <LivingSection />
       <PreFooter showPage={showPage} />
     </>
   );
@@ -479,56 +494,52 @@ function PricingPage({ showPage }) {
 }
 
 function ContactPage() {
-  const [preview, setPreview] = useState('');
-  const servicesOptions = ['Relocation consultation', 'Legal paperwork', 'Personalized moving package', 'Property care', 'Already living in Panama'];
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const name = data.get('name') || 'Your name';
-    const contact = data.get('contact') || 'Preferred contact';
-    const service = data.get('service') || 'Not selected';
-    const area = data.get('area') || 'Not specified';
-    const message = data.get('message') || 'I would like more information.';
-
-    setPreview(`Hello, my name is ${name}. I need help with: ${service}. Area: ${area}. Contact: ${contact}. Details: ${message}`);
-  };
-
   return (
-    <section className="section min-h-[calc(100vh-92px)]">
-      <div className="site-view grid items-stretch gap-6 lg:grid-cols-[.9fr_1.1fr]">
-        <aside className="rounded-[28px] border border-[rgba(174,160,140,.22)] bg-sand/50 p-8">
-          <span className="eyebrow">Contact</span>
-          <h1 className="heading-xl text-ink">Tell us what you need.</h1>
-          <p className="max-w-[420px] text-ink/65">Send a short note and we will help you understand the next practical step.</p>
-          <div className="mt-8 grid gap-0">
-            <span className="border-t border-taupe/40 py-3 text-sm font-extrabold text-navy">WhatsApp: +507 6000-0000</span>
-            <span className="border-t border-taupe/40 py-3 text-sm font-extrabold text-navy">Email: hello@settlepanama.demo</span>
-            <span className="border-t border-taupe/40 py-3 text-sm font-extrabold text-navy">Panama time: 09:00–17:00</span>
-          </div>
-        </aside>
+    <section className="min-h-[calc(100vh-92px)] bg-[#d8d8d8]">
+      <div className="grid min-h-[calc(100vh-92px)] lg:grid-cols-2">
+        <div
+          className="min-h-[360px] bg-cover bg-center lg:min-h-[calc(100vh-92px)]"
+          style={{
+            backgroundImage: `linear-gradient(90deg, rgba(247,245,241,.62), rgba(247,245,241,.10)), url(${assets.mapCard})`
+          }}
+          aria-label="Panama residential skyline"
+        />
 
-        <form className="grid gap-3.5 rounded-[28px] border border-[rgba(174,160,140,.22)] bg-white/60 p-7" onSubmit={handleSubmit}>
-          <div className="grid gap-3.5 md:grid-cols-2">
-            <label className="grid gap-2 text-[13px] font-extrabold text-navy">Name<input className="form-field" name="name" required /></label>
-            <label className="grid gap-2 text-[13px] font-extrabold text-navy">Email or phone<input className="form-field" name="contact" required /></label>
-          </div>
-          <div className="grid gap-3.5 md:grid-cols-2">
-            <label className="grid gap-2 text-[13px] font-extrabold text-navy">Service
-              <select className="form-field" name="service" defaultValue="Relocation consultation">
-                {servicesOptions.map((option) => <option key={option}>{option}</option>)}
-              </select>
-            </label>
-            <label className="grid gap-2 text-[13px] font-extrabold text-navy">Area<input className="form-field" name="area" placeholder="Panama City, Coronado, etc." /></label>
-          </div>
-          <label className="grid gap-2 text-[13px] font-extrabold text-navy">Message<textarea className="form-field min-h-32 resize-y" name="message" /></label>
-          <button className="btn btn-primary w-fit" type="submit">Create message preview</button>
-          {preview && (
-            <div className="rounded-2xl border border-[rgba(174,160,140,.22)] bg-warm/80 p-4 text-sm leading-relaxed text-ink/65">
-              <strong className="text-navy">Message preview:</strong><br />{preview}
+        <div className="flex items-center justify-center px-8 py-16 lg:px-16">
+          <form className="w-full max-w-[560px]" onSubmit={(event) => event.preventDefault()}>
+            <span className="mb-3 block text-xs font-black uppercase tracking-[.14em] text-navy/65">Contact</span>
+            <h1 className="mb-8 text-[clamp(32px,3.4vw,54px)] font-normal uppercase leading-[1.02] tracking-[.02em] text-navy">
+              For more information,<br />
+              <span className="text-gold">contact us</span>
+            </h1>
+
+            <div className="grid gap-7">
+              <label className="block text-xs font-medium text-navy/75">
+                Name*
+                <input className="mt-2 block w-full border-0 border-b border-navy/55 bg-transparent px-0 py-2 text-sm text-navy outline-none transition placeholder:text-navy/35 focus:border-gold focus:ring-0" name="name" required />
+              </label>
+
+              <label className="block text-xs font-medium text-navy/75">
+                Last name*
+                <input className="mt-2 block w-full border-0 border-b border-navy/55 bg-transparent px-0 py-2 text-sm text-navy outline-none transition placeholder:text-navy/35 focus:border-gold focus:ring-0" name="lastName" required />
+              </label>
+
+              <label className="block text-xs font-medium text-navy/75">
+                Email*
+                <input className="mt-2 block w-full border-0 border-b border-navy/55 bg-transparent px-0 py-2 text-sm text-navy outline-none transition placeholder:text-navy/35 focus:border-gold focus:ring-0" type="email" name="email" required />
+              </label>
+
+              <label className="block text-xs font-medium text-navy/75">
+                Phone*
+                <input className="mt-2 block w-full border-0 border-b border-navy/55 bg-transparent px-0 py-2 text-sm text-navy outline-none transition placeholder:text-navy/35 focus:border-gold focus:ring-0" type="tel" name="phone" required />
+              </label>
             </div>
-          )}
-        </form>
+
+            <button className="mt-12 inline-flex min-w-[104px] items-center justify-center border border-gold px-8 py-3 text-xs font-black uppercase tracking-[.08em] text-gold transition hover:bg-gold hover:text-white" type="submit">
+              Send
+            </button>
+          </form>
+        </div>
       </div>
     </section>
   );
@@ -559,7 +570,7 @@ function Footer({ showPage }) {
         </div>
         <div className="flex flex-wrap gap-4 font-extrabold text-sand">
           {['about', 'pricing', 'contact'].map((item) => (
-            <button key={item} className="transition hover:-translate-y-px hover:text-gold" type="button" onClick={() => showPage(item)}>
+            <button key={item} className="transition hover:text-gold" type="button" onClick={() => showPage(item)}>
               {item[0].toUpperCase() + item.slice(1)}
             </button>
           ))}
