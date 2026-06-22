@@ -4,7 +4,7 @@ button,
 input,
 select,
 textarea {
-  font-family: "Segoe UI";
+  font-family: var(--font-system);
 }
 
 *,
@@ -25,6 +25,7 @@ textarea {
 
 @layer base {
   :root {
+  --font-system: "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
     --deep-navy: rgb(13,31,45);
     --sage: rgb(122,145,129);
     --taupe: rgb(174,160,140);
@@ -43,7 +44,7 @@ textarea {
 
   body {
     @apply m-0 bg-warm text-ink antialiased;
-    font-family: "Segoe UI";
+    font-family: var(--font-system);
     background:
       radial-gradient(circle at 12% 2%, rgba(122,145,129,.10), transparent 26%),
       radial-gradient(circle at 86% 4%, rgba(190,154,94,.09), transparent 24%),
