@@ -857,7 +857,7 @@ function RelocationSection({ showPage, scrollLandingSection }) {
           <h2 className="heading-lg text-center text-ink">{tx('A softer landing in Panama.')}</h2>
           <p className="text-ink/65">{tx('Simple, practical support for what usually feels confusing before and after a move.')}</p>
         </div>
-        <div className="grid gap-5 lg:grid-cols-3">
+        <div className="feature-card-grid grid gap-5 lg:grid-cols-3">
           {features.map((feature) => (
             <article key={tx(feature.title)} className="feature-card">
               <h3 className="mb-2 text-2xl font-black leading-tight tracking-[-.045em] text-navy">{tx(feature.title)}</h3>
