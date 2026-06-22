@@ -1278,8 +1278,10 @@ function ContactPage() {
 
     const form = event.currentTarget;
     const formData = new FormData(form);
+    formData.set('replyto', formData.get('email') || '');
 
-    if (!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY === '8e2839ab-332b-4d87-b8a8-631e00dfe0a0') {
+    if (!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY === 'REPLACE_WITH_WEB3FORMS_ACCESS_KEY') {
+      console.error('Missing Web3Forms access key.');
       setFormStatus('error');
       return;
     }
@@ -1326,6 +1328,7 @@ function ContactPage() {
             <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
             <input type="hidden" name="subject" value="New Settle Panama contact request" />
             <input type="hidden" name="from_name" value="Settle Panama Website" />
+            <input type="hidden" name="replyto" value="" />
             <input className="hidden" type="checkbox" name="botcheck" tabIndex="-1" autoComplete="off" />
             <span className="mb-3 block text-xs font-black uppercase tracking-[.14em] text-navy/65">{tx('Contact')}</span>
             <h1 className="mb-8 text-[clamp(32px,3.4vw,54px)] font-normal uppercase leading-[1.02] tracking-[.02em] text-navy">
