@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
-import { Menu, Moon, Sun, ArrowRight } from 'lucide-react';
+import { Menu, Moon, Sun, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { assets } from './lib/assets.js';
 
 const pages = ['landing', 'about', 'about-panama', 'all-our-services', 'contact', 'templates'];
@@ -224,6 +224,8 @@ const translations = {
     "We answer until 12:00 AM Panama time": "Respondemos hasta las 12:00 AM hora de Panamá",
     "Contact us": "Contáctanos",
     "Digital experience by SafeGuard CCS": "Experiencia digital por SafeGuard CCS",
+    "Previous option": "Opción anterior",
+    "Next option": "Siguiente opción",
     "Drag map": "Arrastra el mapa"
   },
   fr: {
@@ -357,6 +359,8 @@ const translations = {
     "We answer until 12:00 AM Panama time": "Nous répondons jusqu’à 12:00 AM, heure du Panama",
     "Contact us": "Contactez-nous",
     "Digital experience by SafeGuard CCS": "Expérience digitale par SafeGuard CCS",
+    "Previous option": "Option précédente",
+    "Next option": "Option suivante",
     "Drag map": "Faites glisser la carte"
   }
 
@@ -996,6 +1000,8 @@ function AboutPanamaPage({ showPage }) {
   const loadedImagesRef = useRef(new Set());
   const autoCycleTimeoutRef = useRef(null);
   const crossfadeTimeoutRef = useRef(null);
+  const optionScrollerRef = useRef(null);
+  const optionButtonRefs = useRef([]);
 
   const activeHighlight = panamaHighlights[activeHighlightIndex];
 
@@ -1049,6 +1055,11 @@ function AboutPanamaPage({ showPage }) {
     scheduleNextAutoCycle();
   };
 
+  const moveHighlight = (direction) => {
+    const nextIndex = (activeHighlightIndex + direction + panamaHighlights.length) % panamaHighlights.length;
+    handleHighlightSelect(nextIndex);
+  };
+
   useEffect(() => {
     panamaHighlights.forEach((item) => {
       const img = new Image();
@@ -1072,6 +1083,17 @@ function AboutPanamaPage({ showPage }) {
         window.clearTimeout(autoCycleTimeoutRef.current);
       }
     };
+  }, [activeHighlightIndex]);
+
+  useEffect(() => {
+    const activeButton = optionButtonRefs.current[activeHighlightIndex];
+    if (!activeButton) return;
+
+    activeButton.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'center'
+    });
   }, [activeHighlightIndex]);
 
   useEffect(() => {
@@ -1120,19 +1142,42 @@ function AboutPanamaPage({ showPage }) {
             <p>{tx(activeHighlight.text)}</p>
           </div>
 
-          <div className="about-panama-options" aria-label={tx('Reasons to choose Panama')}>
-            {panamaHighlights.map((item, index) => (
-              <button
-                key={item.title}
-                className={`about-panama-option ${activeHighlightIndex === index ? 'is-active' : ''}`}
-                type="button"
-                onClick={() => handleHighlightSelect(index)}
-              >
-                <span className="about-panama-option-kicker">{tx(item.eyebrow)}</span>
-                <span className="about-panama-option-title">{tx(item.title)}</span>
-                <span className="about-panama-option-short">{tx(item.short)}</span>
-              </button>
-            ))}
+          <div className="about-panama-options-shell">
+            <button
+              className="about-panama-slider-arrow about-panama-slider-arrow-left"
+              type="button"
+              aria-label={tx('Previous option')}
+              onClick={() => moveHighlight(-1)}
+            >
+              <ChevronLeft size={18} />
+            </button>
+
+            <div ref={optionScrollerRef} className="about-panama-options" aria-label={tx('Reasons to choose Panama')}>
+              {panamaHighlights.map((item, index) => (
+                <button
+                  key={item.title}
+                  ref={(node) => {
+                    optionButtonRefs.current[index] = node;
+                  }}
+                  className={`about-panama-option ${activeHighlightIndex === index ? 'is-active' : ''}`}
+                  type="button"
+                  onClick={() => handleHighlightSelect(index)}
+                >
+                  <span className="about-panama-option-kicker">{tx(item.eyebrow)}</span>
+                  <span className="about-panama-option-title">{tx(item.title)}</span>
+                  <span className="about-panama-option-short">{tx(item.short)}</span>
+                </button>
+              ))}
+            </div>
+
+            <button
+              className="about-panama-slider-arrow about-panama-slider-arrow-right"
+              type="button"
+              aria-label={tx('Next option')}
+              onClick={() => moveHighlight(1)}
+            >
+              <ChevronRight size={18} />
+            </button>
           </div>
         </div>
 

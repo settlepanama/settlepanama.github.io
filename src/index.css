@@ -1326,3 +1326,99 @@ html[data-theme='dark'] .location-map-drag-hint {
     line-height: 1.55;
   }
 }
+
+
+/* About Panama mobile option slider */
+.about-panama-explorer,
+.about-panama-spotlight,
+.about-panama-options-shell {
+  min-width: 0;
+}
+
+.about-panama-options-shell {
+  position: relative;
+}
+
+.about-panama-slider-arrow {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .about-panama-shell {
+    overflow-x: clip;
+  }
+
+  .about-panama-explorer {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .about-panama-spotlight {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .about-panama-options-shell {
+    width: 100%;
+    max-width: 100%;
+    padding-inline: 42px;
+  }
+
+  .about-panama-options {
+    display: flex;
+    grid-template-columns: none;
+    gap: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .about-panama-options::-webkit-scrollbar {
+    display: none;
+  }
+
+  .about-panama-option {
+    flex: 0 0 min(100%, 290px);
+    scroll-snap-align: center;
+  }
+
+  .about-panama-slider-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 12;
+    display: grid;
+    height: 34px;
+    width: 34px;
+    transform: translateY(-50%);
+    place-items: center;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.30);
+    background: rgba(13,31,45,.62);
+    color: white;
+    box-shadow: 0 12px 28px rgba(13,31,45,.22);
+    backdrop-filter: blur(10px);
+  }
+
+  .about-panama-slider-arrow-left {
+    left: 0;
+  }
+
+  .about-panama-slider-arrow-right {
+    right: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .about-panama-options-shell {
+    padding-inline: 38px;
+  }
+
+  .about-panama-option {
+    flex-basis: min(100%, 260px);
+  }
+}
